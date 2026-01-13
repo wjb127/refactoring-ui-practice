@@ -437,14 +437,317 @@ export default function GradientPage() {
           line-height: 1.7;
         }
 
-        .gradient-stats {
+        /* How It Works Section */
+        .gradient-how {
+          padding: var(--space-9) var(--space-6);
+          background: var(--gradient-soft);
+        }
+
+        .gradient-how-steps {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: var(--space-5);
+          position: relative;
+        }
+
+        .gradient-how-steps::before {
+          content: '';
+          position: absolute;
+          top: 48px;
+          left: 12%;
+          right: 12%;
+          height: 3px;
+          background: var(--gradient-primary);
+          border-radius: var(--radius-full);
+          z-index: 0;
+        }
+
+        .gradient-step {
+          text-align: center;
+          position: relative;
+          z-index: 1;
+        }
+
+        .gradient-step-number {
+          width: 48px;
+          height: 48px;
+          background: var(--gradient-primary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          font-weight: 800;
+          color: white;
+          margin: 0 auto var(--space-5);
+          box-shadow: 0 4px 16px rgba(9, 103, 210, 0.3);
+        }
+
+        .gradient-step-icon {
+          width: 80px;
+          height: 80px;
+          background: var(--glass-bg);
+          backdrop-filter: blur(8px);
+          border: 1px solid var(--glass-border);
+          border-radius: var(--radius-lg);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 36px;
+          margin: 0 auto var(--space-4);
+          box-shadow: var(--glass-shadow);
+        }
+
+        .gradient-step h3 {
+          font-size: 18px;
+          font-weight: 700;
+          color: var(--grey-900);
+          margin-bottom: var(--space-2);
+        }
+
+        .gradient-step p {
+          font-size: 14px;
+          color: var(--grey-500);
+          line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .gradient-pricing {
+          padding: var(--space-9) var(--space-6);
+          background: white;
+        }
+
+        .gradient-pricing-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--space-5);
+        }
+
+        .gradient-pricing-card {
+          background: var(--gradient-soft);
+          border-radius: var(--radius-xl);
+          padding: var(--space-7);
+          text-align: center;
+          transition: all 0.3s;
+          border: 2px solid transparent;
+          position: relative;
+        }
+
+        .gradient-pricing-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 60px rgba(9, 103, 210, 0.15);
+        }
+
+        .gradient-pricing-card.featured {
+          background: var(--gradient-primary);
+          color: white;
+          transform: scale(1.05);
+        }
+
+        .gradient-pricing-card.featured:hover {
+          transform: scale(1.05) translateY(-8px);
+        }
+
+        .gradient-pricing-badge {
+          position: absolute;
+          top: -12px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: var(--gradient-accent);
+          color: white;
+          padding: var(--space-1) var(--space-4);
+          border-radius: var(--radius-full);
+          font-size: 12px;
+          font-weight: 700;
+        }
+
+        .gradient-pricing-icon {
+          font-size: 48px;
+          margin-bottom: var(--space-4);
+        }
+
+        .gradient-pricing-name {
+          font-size: 24px;
+          font-weight: 800;
+          margin-bottom: var(--space-2);
+        }
+
+        .gradient-pricing-card.featured .gradient-pricing-name {
+          color: white;
+        }
+
+        .gradient-pricing-desc {
+          font-size: 14px;
+          color: var(--grey-500);
+          margin-bottom: var(--space-5);
+        }
+
+        .gradient-pricing-card.featured .gradient-pricing-desc {
+          color: rgba(255,255,255,0.8);
+        }
+
+        .gradient-pricing-price {
+          font-size: 48px;
+          font-weight: 800;
+          margin-bottom: var(--space-1);
+        }
+
+        .gradient-pricing-price span {
+          font-size: 18px;
+          font-weight: 500;
+        }
+
+        .gradient-pricing-card:not(.featured) .gradient-pricing-price {
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .gradient-pricing-period {
+          font-size: 14px;
+          color: var(--grey-500);
+          margin-bottom: var(--space-5);
+        }
+
+        .gradient-pricing-card.featured .gradient-pricing-period {
+          color: rgba(255,255,255,0.7);
+        }
+
+        .gradient-pricing-features {
+          list-style: none;
+          margin-bottom: var(--space-6);
+          text-align: left;
+        }
+
+        .gradient-pricing-features li {
+          padding: var(--space-2) 0;
+          font-size: 14px;
+          color: var(--grey-600);
+          display: flex;
+          align-items: center;
+          gap: var(--space-3);
+        }
+
+        .gradient-pricing-card.featured .gradient-pricing-features li {
+          color: rgba(255,255,255,0.9);
+        }
+
+        .gradient-pricing-features li::before {
+          content: '✓';
+          width: 20px;
+          height: 20px;
+          background: var(--cyan-100);
+          color: var(--cyan-600);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
+          font-weight: 700;
+          flex-shrink: 0;
+        }
+
+        .gradient-pricing-card.featured .gradient-pricing-features li::before {
+          background: rgba(255,255,255,0.2);
+          color: white;
+        }
+
+        .gradient-pricing-card .gradient-btn {
+          width: 100%;
+        }
+
+        .gradient-pricing-card.featured .gradient-btn-primary {
+          background: white;
+          color: var(--blue-600);
+        }
+
+        .gradient-pricing-card.featured .gradient-btn-primary:hover {
+          background: var(--blue-050);
+        }
+
+        /* Testimonials Section */
+        .gradient-testimonials {
+          padding: var(--space-9) var(--space-6);
+          background: var(--gradient-soft);
+        }
+
+        .gradient-testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--space-5);
+        }
+
+        .gradient-testimonial-card {
+          background: var(--glass-bg);
+          backdrop-filter: blur(16px);
+          border: 1px solid var(--glass-border);
+          border-radius: var(--radius-lg);
+          padding: var(--space-6);
+          box-shadow: var(--glass-shadow);
+          transition: all 0.3s;
+        }
+
+        .gradient-testimonial-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 16px 48px rgba(9, 103, 210, 0.2);
+        }
+
+        .gradient-testimonial-rating {
+          display: flex;
+          gap: var(--space-1);
+          margin-bottom: var(--space-4);
+        }
+
+        .gradient-testimonial-star {
+          color: #FFB800;
+          font-size: 18px;
+        }
+
+        .gradient-testimonial-content {
+          font-size: 15px;
+          color: var(--grey-600);
+          line-height: 1.8;
+          margin-bottom: var(--space-5);
+        }
+
+        .gradient-testimonial-author {
+          display: flex;
+          align-items: center;
+          gap: var(--space-4);
+        }
+
+        .gradient-testimonial-avatar {
+          width: 48px;
+          height: 48px;
+          background: var(--gradient-primary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+        }
+
+        .gradient-testimonial-name {
+          font-size: 16px;
+          font-weight: 700;
+          color: var(--grey-900);
+        }
+
+        .gradient-testimonial-role {
+          font-size: 13px;
+          color: var(--grey-500);
+        }
+
+        /* Security Section */
+        .gradient-security {
           padding: var(--space-9) var(--space-6);
           background: var(--gradient-dark);
           position: relative;
           overflow: hidden;
         }
 
-        .gradient-stats::before {
+        .gradient-security::before {
           content: '';
           position: absolute;
           top: 0;
@@ -452,6 +755,103 @@ export default function GradientPage() {
           right: 0;
           bottom: 0;
           background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .gradient-security-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--space-8);
+          align-items: center;
+          position: relative;
+        }
+
+        .gradient-security-content h2 {
+          font-size: 40px;
+          font-weight: 800;
+          color: white;
+          margin-bottom: var(--space-5);
+        }
+
+        .gradient-security-content p {
+          font-size: 17px;
+          color: var(--grey-400);
+          line-height: 1.8;
+          margin-bottom: var(--space-6);
+        }
+
+        .gradient-security-features {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--space-4);
+        }
+
+        .gradient-security-item {
+          display: flex;
+          align-items: center;
+          gap: var(--space-3);
+        }
+
+        .gradient-security-icon {
+          width: 40px;
+          height: 40px;
+          background: rgba(28, 212, 212, 0.2);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+        }
+
+        .gradient-security-item span {
+          font-size: 14px;
+          color: var(--grey-300);
+        }
+
+        .gradient-security-visual {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .gradient-shield {
+          width: 200px;
+          height: 240px;
+          background: var(--gradient-primary);
+          border-radius: var(--radius-xl);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 20px 60px rgba(9, 103, 210, 0.4);
+          position: relative;
+        }
+
+        .gradient-shield::before {
+          content: '';
+          position: absolute;
+          inset: 4px;
+          background: rgba(255,255,255,0.1);
+          border-radius: calc(var(--radius-xl) - 4px);
+        }
+
+        .gradient-shield-icon {
+          font-size: 64px;
+          margin-bottom: var(--space-3);
+          position: relative;
+        }
+
+        .gradient-shield-text {
+          font-size: 18px;
+          font-weight: 700;
+          color: white;
+          position: relative;
+        }
+
+        .gradient-stats {
+          padding: var(--space-9) var(--space-6);
+          background: white;
         }
 
         .gradient-stats-grid {
@@ -479,13 +879,14 @@ export default function GradientPage() {
 
         .gradient-stat-label {
           font-size: 14px;
-          color: var(--grey-400);
+          color: var(--grey-500);
         }
 
         .gradient-cta {
           padding: var(--space-10) var(--space-6);
           text-align: center;
           position: relative;
+          background: var(--gradient-soft);
         }
 
         .gradient-cta-box {
@@ -590,6 +991,14 @@ export default function GradientPage() {
           .gradient-features-grid { grid-template-columns: repeat(2, 1fr); }
           .gradient-hero-cards { flex-direction: column; align-items: center; }
           .gradient-card-preview { transform: none !important; margin-top: 0 !important; }
+          .gradient-how-steps { grid-template-columns: repeat(2, 1fr); }
+          .gradient-how-steps::before { display: none; }
+          .gradient-pricing-grid { grid-template-columns: 1fr; }
+          .gradient-pricing-card.featured { transform: none; }
+          .gradient-pricing-card.featured:hover { transform: translateY(-8px); }
+          .gradient-testimonials-grid { grid-template-columns: 1fr; }
+          .gradient-security-container { grid-template-columns: 1fr; }
+          .gradient-security-visual { display: none; }
         }
 
         @media (max-width: 768px) {
@@ -597,6 +1006,7 @@ export default function GradientPage() {
           .gradient-features-grid { grid-template-columns: 1fr; }
           .gradient-stats-grid { grid-template-columns: repeat(2, 1fr); }
           .gradient-nav-links { display: none; }
+          .gradient-security-features { grid-template-columns: 1fr; }
         }
       `}</style>
 
@@ -606,7 +1016,7 @@ export default function GradientPage() {
           <ul className="gradient-nav-links">
             <li><a href="#">Features</a></li>
             <li><a href="#">Pricing</a></li>
-            <li><a href="#">Enterprise</a></li>
+            <li><a href="#">Security</a></li>
             <li><a href="#">Resources</a></li>
           </ul>
           <a href="#" className="gradient-btn gradient-btn-primary">Get Started</a>
@@ -692,23 +1102,242 @@ export default function GradientPage() {
         </div>
       </section>
 
+      {/* How It Works Section */}
+      <section className="gradient-how">
+        <div className="gradient-section-container">
+          <div className="gradient-section-header">
+            <div className="gradient-section-label">How It Works</div>
+            <h2 className="gradient-section-title">시작하기</h2>
+            <p className="gradient-section-desc">3분이면 스마트한 금융 생활을 시작할 수 있습니다</p>
+          </div>
+
+          <div className="gradient-how-steps">
+            <div className="gradient-step">
+              <div className="gradient-step-number">1</div>
+              <div className="gradient-step-icon">📱</div>
+              <h3>앱 다운로드</h3>
+              <p>App Store 또는 Play Store에서 무료로 다운로드하세요</p>
+            </div>
+            <div className="gradient-step">
+              <div className="gradient-step-number">2</div>
+              <div className="gradient-step-icon">🔗</div>
+              <h3>계좌 연결</h3>
+              <p>보유한 은행 계좌와 카드를 안전하게 연결합니다</p>
+            </div>
+            <div className="gradient-step">
+              <div className="gradient-step-number">3</div>
+              <div className="gradient-step-icon">🎯</div>
+              <h3>목표 설정</h3>
+              <p>재정 목표와 투자 성향을 설정합니다</p>
+            </div>
+            <div className="gradient-step">
+              <div className="gradient-step-number">4</div>
+              <div className="gradient-step-icon">🚀</div>
+              <h3>자동 관리</h3>
+              <p>AI가 자동으로 분석하고 최적화합니다</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="gradient-pricing">
+        <div className="gradient-section-container">
+          <div className="gradient-section-header">
+            <div className="gradient-section-label">Pricing</div>
+            <h2 className="gradient-section-title">요금제 선택</h2>
+            <p className="gradient-section-desc">당신에게 맞는 플랜을 선택하세요</p>
+          </div>
+
+          <div className="gradient-pricing-grid">
+            <div className="gradient-pricing-card">
+              <div className="gradient-pricing-icon">✨</div>
+              <div className="gradient-pricing-name">Basic</div>
+              <p className="gradient-pricing-desc">개인 사용자를 위한 기본 플랜</p>
+              <div className="gradient-pricing-price">무료</div>
+              <div className="gradient-pricing-period">영구 무료</div>
+              <ul className="gradient-pricing-features">
+                <li>계좌 3개 연결</li>
+                <li>기본 지출 분석</li>
+                <li>월간 리포트</li>
+                <li>커뮤니티 지원</li>
+              </ul>
+              <a href="#" className="gradient-btn gradient-btn-secondary">무료로 시작</a>
+            </div>
+
+            <div className="gradient-pricing-card featured">
+              <span className="gradient-pricing-badge">Most Popular</span>
+              <div className="gradient-pricing-icon">💎</div>
+              <div className="gradient-pricing-name">Pro</div>
+              <p className="gradient-pricing-desc">적극적인 자산 관리를 원하는 분</p>
+              <div className="gradient-pricing-price">₩9,900<span>/월</span></div>
+              <div className="gradient-pricing-period">연간 결제 시 20% 할인</div>
+              <ul className="gradient-pricing-features">
+                <li>무제한 계좌 연결</li>
+                <li>AI 맞춤 분석</li>
+                <li>자동 투자 기능</li>
+                <li>실시간 알림</li>
+                <li>주간 리포트</li>
+                <li>1:1 상담 지원</li>
+              </ul>
+              <a href="#" className="gradient-btn gradient-btn-primary">Pro 시작하기</a>
+            </div>
+
+            <div className="gradient-pricing-card">
+              <div className="gradient-pricing-icon">🏢</div>
+              <div className="gradient-pricing-name">Business</div>
+              <p className="gradient-pricing-desc">기업 및 팀을 위한 플랜</p>
+              <div className="gradient-pricing-price">₩29,900<span>/월</span></div>
+              <div className="gradient-pricing-period">사용자당 가격</div>
+              <ul className="gradient-pricing-features">
+                <li>Pro 모든 기능 포함</li>
+                <li>팀 대시보드</li>
+                <li>법인카드 관리</li>
+                <li>비용 승인 워크플로우</li>
+                <li>전담 매니저</li>
+                <li>API 연동</li>
+              </ul>
+              <a href="#" className="gradient-btn gradient-btn-secondary">영업팀 문의</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="gradient-testimonials">
+        <div className="gradient-section-container">
+          <div className="gradient-section-header">
+            <div className="gradient-section-label">Testimonials</div>
+            <h2 className="gradient-section-title">고객 후기</h2>
+            <p className="gradient-section-desc">Finflow와 함께 재정 목표를 달성한 고객들의 이야기</p>
+          </div>
+
+          <div className="gradient-testimonials-grid">
+            <div className="gradient-testimonial-card">
+              <div className="gradient-testimonial-rating">
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+              </div>
+              <p className="gradient-testimonial-content">
+                "처음으로 제 돈이 어디로 가는지 정확히 알게 됐어요.
+                AI 분석 덕분에 월 50만원 이상 절약하고 있습니다."
+              </p>
+              <div className="gradient-testimonial-author">
+                <div className="gradient-testimonial-avatar">👨‍💼</div>
+                <div>
+                  <div className="gradient-testimonial-name">김민수</div>
+                  <div className="gradient-testimonial-role">스타트업 대표</div>
+                </div>
+              </div>
+            </div>
+            <div className="gradient-testimonial-card">
+              <div className="gradient-testimonial-rating">
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+              </div>
+              <p className="gradient-testimonial-content">
+                "자동 투자 기능으로 복잡한 투자 결정에서 해방됐어요.
+                1년 만에 15% 수익률을 달성했습니다."
+              </p>
+              <div className="gradient-testimonial-author">
+                <div className="gradient-testimonial-avatar">👩‍🎓</div>
+                <div>
+                  <div className="gradient-testimonial-name">박서윤</div>
+                  <div className="gradient-testimonial-role">대학원생</div>
+                </div>
+              </div>
+            </div>
+            <div className="gradient-testimonial-card">
+              <div className="gradient-testimonial-rating">
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+                <span className="gradient-testimonial-star">★</span>
+              </div>
+              <p className="gradient-testimonial-content">
+                "결혼 자금 목표를 설정하고 자동 저축을 시작했는데,
+                생각보다 빨리 목표에 도달할 수 있었어요!"
+              </p>
+              <div className="gradient-testimonial-author">
+                <div className="gradient-testimonial-avatar">👩‍💻</div>
+                <div>
+                  <div className="gradient-testimonial-name">이지현</div>
+                  <div className="gradient-testimonial-role">개발자</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Security Section */}
+      <section className="gradient-security">
+        <div className="gradient-security-container">
+          <div className="gradient-security-content">
+            <h2>은행급 보안으로<br />자산을 보호합니다</h2>
+            <p>
+              Finflow는 금융 기관 수준의 보안 프로토콜을 적용하여
+              당신의 개인정보와 금융 데이터를 철저하게 보호합니다.
+            </p>
+            <div className="gradient-security-features">
+              <div className="gradient-security-item">
+                <div className="gradient-security-icon">🔐</div>
+                <span>256비트 AES 암호화</span>
+              </div>
+              <div className="gradient-security-item">
+                <div className="gradient-security-icon">👆</div>
+                <span>생체 인증</span>
+              </div>
+              <div className="gradient-security-item">
+                <div className="gradient-security-icon">🛡️</div>
+                <span>이상 거래 탐지</span>
+              </div>
+              <div className="gradient-security-item">
+                <div className="gradient-security-icon">📋</div>
+                <span>ISO 27001 인증</span>
+              </div>
+            </div>
+          </div>
+          <div className="gradient-security-visual">
+            <div className="gradient-shield">
+              <div className="gradient-shield-icon">🛡️</div>
+              <div className="gradient-shield-text">Bank-Level Security</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="gradient-stats">
-        <div className="gradient-stats-grid">
-          <div className="gradient-stat">
-            <div className="gradient-stat-value">500K+</div>
-            <div className="gradient-stat-label">활성 사용자</div>
+        <div className="gradient-section-container">
+          <div className="gradient-section-header">
+            <div className="gradient-section-label">Our Impact</div>
+            <h2 className="gradient-section-title">숫자로 보는 Finflow</h2>
           </div>
-          <div className="gradient-stat">
-            <div className="gradient-stat-value">₩2.3조</div>
-            <div className="gradient-stat-label">관리 자산</div>
-          </div>
-          <div className="gradient-stat">
-            <div className="gradient-stat-value">4.9</div>
-            <div className="gradient-stat-label">앱스토어 평점</div>
-          </div>
-          <div className="gradient-stat">
-            <div className="gradient-stat-value">15%</div>
-            <div className="gradient-stat-label">평균 저축률 증가</div>
+
+          <div className="gradient-stats-grid">
+            <div className="gradient-stat">
+              <div className="gradient-stat-value">500K+</div>
+              <div className="gradient-stat-label">활성 사용자</div>
+            </div>
+            <div className="gradient-stat">
+              <div className="gradient-stat-value">₩2.3조</div>
+              <div className="gradient-stat-label">관리 자산</div>
+            </div>
+            <div className="gradient-stat">
+              <div className="gradient-stat-value">4.9</div>
+              <div className="gradient-stat-label">앱스토어 평점</div>
+            </div>
+            <div className="gradient-stat">
+              <div className="gradient-stat-value">15%</div>
+              <div className="gradient-stat-label">평균 저축률 증가</div>
+            </div>
           </div>
         </div>
       </section>
