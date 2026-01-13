@@ -6,26 +6,29 @@ export default function ElegantPage() {
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
         :root {
-          --gold-100: #FDF6E3;
-          --gold-200: #F5E6C8;
-          --gold-300: #E8D5A3;
-          --gold-400: #D4AF37;
-          --gold-500: #C9A227;
-          --gold-600: #B8860B;
+          /* Elegant Dark + Gold Palette */
+          --gold-100: #F5EFE0;
+          --gold-200: #E8DCC4;
+          --gold-300: #D4C4A8;
+          --gold-400: #C9B896;
+          --gold-500: #B8A47C;
+          --gold-600: #A08B5B;
+          --gold-700: #8B7344;
+          --gold-800: #6B572F;
 
-          --dark-100: #2D2D2D;
+          --dark-100: #2A2A2A;
           --dark-200: #1F1F1F;
-          --dark-300: #1A1A1A;
-          --dark-400: #141414;
+          --dark-300: #171717;
+          --dark-400: #121212;
           --dark-500: #0A0A0A;
 
           --cream: #FAF8F5;
-          --text-light: #8A8A8A;
-          --text-dark: #1A1A1A;
+          --white: #FFFFFF;
 
+          /* Very generous spacing for luxury feel */
           --space-1: 4px;
           --space-2: 8px;
           --space-3: 16px;
@@ -37,387 +40,727 @@ export default function ElegantPage() {
           --space-9: 128px;
           --space-10: 160px;
 
-          --radius: 0;
+          /* Minimal radius */
+          --radius-sm: 0;
+          --radius-md: 2px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-          font-family: 'Montserrat', sans-serif;
-          background: var(--cream);
-          color: var(--text-dark);
+          font-family: 'Montserrat', -apple-system, sans-serif;
+          font-size: 15px;
+          font-weight: 400;
           line-height: 1.8;
+          color: var(--dark-200);
+          background: var(--white);
+          letter-spacing: 0.02em;
         }
 
-        .elegant-nav {
-          padding: var(--space-5) var(--space-6);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+        h1, h2, h3, h4 {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-weight: 500;
+          letter-spacing: 0.02em;
+        }
+
+        .container {
           max-width: 1400px;
           margin: 0 auto;
-          border-bottom: 1px solid rgba(0,0,0,0.08);
+          padding: 0 var(--space-6);
         }
 
-        .elegant-logo {
+        /* === Navigation === */
+        .nav {
+          background: rgba(255,255,255,0.98);
+          border-bottom: 1px solid var(--gold-200);
+          padding: var(--space-5) 0;
+        }
+
+        .nav-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .logo {
           font-family: 'Cormorant Garamond', serif;
           font-size: 28px;
           font-weight: 600;
-          color: var(--text-dark);
-          letter-spacing: 4px;
+          letter-spacing: 0.3em;
+          color: var(--dark-200);
+          text-decoration: none;
         }
 
-        .elegant-nav-links {
+        .nav-links {
           display: flex;
           gap: var(--space-6);
-          list-style: none;
         }
 
-        .elegant-nav-links a {
-          color: var(--text-light);
-          text-decoration: none;
-          font-size: 12px;
-          font-weight: 500;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          transition: color 0.3s;
-        }
-
-        .elegant-nav-links a:hover {
-          color: var(--gold-500);
-        }
-
-        .elegant-btn {
-          padding: var(--space-3) var(--space-5);
+        .nav-links a {
           font-size: 11px;
           font-weight: 500;
-          letter-spacing: 2px;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
-          cursor: pointer;
-          transition: all 0.3s;
+          color: var(--dark-100);
           text-decoration: none;
-          display: inline-block;
+          padding: var(--space-2) 0;
+          position: relative;
         }
 
-        .elegant-btn-primary {
-          background: var(--dark-300);
-          color: white;
-          border: 1px solid var(--dark-300);
+        .nav-links a::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: var(--gold-600);
+          transition: width 0.3s ease;
         }
 
-        .elegant-btn-primary:hover {
-          background: var(--gold-500);
-          border-color: var(--gold-500);
+        .nav-links a:hover::after {
+          width: 100%;
         }
 
-        .elegant-btn-outline {
-          background: transparent;
-          color: var(--text-dark);
-          border: 1px solid var(--dark-300);
-        }
-
-        .elegant-btn-outline:hover {
-          background: var(--dark-300);
-          color: white;
-        }
-
-        .elegant-hero {
-          padding: var(--space-10) var(--space-6);
-          text-align: center;
-          background: linear-gradient(180deg, var(--cream) 0%, white 100%);
-        }
-
-        .elegant-hero-label {
-          font-size: 11px;
-          font-weight: 500;
-          letter-spacing: 4px;
-          text-transform: uppercase;
-          color: var(--gold-500);
-          margin-bottom: var(--space-5);
-        }
-
-        .elegant-hero h1 {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 72px;
-          font-weight: 400;
-          color: var(--text-dark);
-          margin-bottom: var(--space-5);
-          line-height: 1.1;
-          letter-spacing: 2px;
-        }
-
-        .elegant-hero p {
-          font-size: 15px;
-          color: var(--text-light);
-          max-width: 500px;
-          margin: 0 auto var(--space-7);
-          font-weight: 300;
-          line-height: 2;
-        }
-
-        .elegant-hero-actions {
+        .nav-actions {
           display: flex;
           gap: var(--space-4);
+          align-items: center;
+        }
+
+        .btn {
+          display: inline-flex;
+          align-items: center;
           justify-content: center;
-        }
-
-        .elegant-divider {
-          width: 60px;
-          height: 1px;
-          background: var(--gold-400);
-          margin: var(--space-9) auto;
-        }
-
-        .elegant-collection {
-          padding: var(--space-9) var(--space-6);
-          background: white;
-        }
-
-        .elegant-section-header {
-          text-align: center;
-          margin-bottom: var(--space-8);
-        }
-
-        .elegant-section-label {
+          padding: var(--space-3) var(--space-5);
+          font-family: 'Montserrat', sans-serif;
           font-size: 11px;
           font-weight: 500;
-          letter-spacing: 4px;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: var(--gold-500);
-          margin-bottom: var(--space-3);
+          text-decoration: none;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          border: none;
         }
 
-        .elegant-section-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 42px;
-          font-weight: 400;
-          color: var(--text-dark);
-          letter-spacing: 1px;
+        .btn-primary {
+          background: var(--dark-200);
+          color: var(--white);
         }
 
-        .elegant-products-grid {
+        .btn-primary:hover {
+          background: var(--gold-700);
+        }
+
+        .btn-outline {
+          background: transparent;
+          color: var(--dark-200);
+          border: 1px solid var(--dark-200);
+        }
+
+        .btn-outline:hover {
+          background: var(--dark-200);
+          color: var(--white);
+        }
+
+        .btn-gold {
+          background: var(--gold-600);
+          color: var(--white);
+        }
+
+        .btn-gold:hover {
+          background: var(--gold-700);
+        }
+
+        /* === Hero Section === */
+        .hero {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero::before {
+          content: '';
+          position: absolute;
+          width: 600px;
+          height: 600px;
+          border: 1px solid var(--gold-300);
+          border-radius: 50%;
+          right: 10%;
+          top: 50%;
+          transform: translateY(-50%);
+          opacity: 0.5;
+        }
+
+        .hero-container {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: var(--space-6);
-          max-width: 1200px;
-          margin: 0 auto;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--space-8);
+          align-items: center;
+          padding: var(--space-9) 0;
         }
 
-        .elegant-product-card {
-          text-align: center;
-          padding: var(--space-6);
-          transition: all 0.3s;
+        .hero-content {
+          max-width: 560px;
         }
 
-        .elegant-product-card:hover {
-          background: var(--cream);
+        .hero-tagline {
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          color: var(--gold-600);
+          margin-bottom: var(--space-4);
         }
 
-        .elegant-product-image {
-          width: 100%;
-          height: 400px;
-          background: linear-gradient(135deg, var(--dark-200) 0%, var(--dark-400) 100%);
+        .hero-content h1 {
+          font-size: 64px;
+          line-height: 1.1;
+          color: var(--dark-300);
           margin-bottom: var(--space-5);
+        }
+
+        .hero-content h1 em {
+          font-style: italic;
+          color: var(--gold-700);
+        }
+
+        .hero-description {
+          font-size: 16px;
+          color: var(--dark-100);
+          margin-bottom: var(--space-6);
+          line-height: 1.9;
+          opacity: 0.8;
+        }
+
+        .hero-cta {
+          display: flex;
+          gap: var(--space-4);
+        }
+
+        .hero-visual {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .watch-display {
+          width: 400px;
+          height: 400px;
+          background: linear-gradient(145deg, var(--gold-200), var(--gold-100));
+          border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 48px;
+          position: relative;
         }
 
-        .elegant-product-card h3 {
+        .watch-display::before {
+          content: '';
+          position: absolute;
+          width: 420px;
+          height: 420px;
+          border: 1px solid var(--gold-400);
+          border-radius: 50%;
+        }
+
+        .watch-inner {
+          width: 200px;
+          height: 200px;
+          background: var(--dark-300);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .watch-face {
+          width: 160px;
+          height: 160px;
+          background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+          border-radius: 50%;
+          border: 4px solid var(--gold-500);
+          display: flex;
+          align-items: center;
+          justify-content: center;
           font-family: 'Cormorant Garamond', serif;
-          font-size: 24px;
-          font-weight: 500;
-          margin-bottom: var(--space-2);
-          letter-spacing: 1px;
+          font-size: 14px;
+          color: var(--gold-400);
+          letter-spacing: 0.2em;
         }
 
-        .elegant-product-card p {
-          font-size: 13px;
-          color: var(--text-light);
+        /* === Features Section === */
+        .features {
+          padding: var(--space-10) 0;
+          background: var(--white);
+        }
+
+        .section-header {
+          text-align: center;
+          max-width: 600px;
+          margin: 0 auto var(--space-8);
+        }
+
+        .section-label {
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          color: var(--gold-600);
           margin-bottom: var(--space-3);
         }
 
-        .elegant-product-price {
-          font-size: 14px;
-          font-weight: 500;
-          color: var(--gold-500);
-          letter-spacing: 1px;
+        .section-header h2 {
+          font-size: 42px;
+          color: var(--dark-300);
+          margin-bottom: var(--space-4);
         }
 
-        .elegant-about {
-          padding: var(--space-10) var(--space-6);
-          background: var(--dark-300);
-          color: white;
-          text-align: center;
-        }
-
-        .elegant-about h2 {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 48px;
-          font-weight: 400;
-          margin-bottom: var(--space-5);
-          letter-spacing: 2px;
-        }
-
-        .elegant-about p {
-          font-size: 15px;
-          color: rgba(255,255,255,0.7);
-          max-width: 600px;
-          margin: 0 auto var(--space-7);
-          font-weight: 300;
-          line-height: 2;
-        }
-
-        .elegant-about .elegant-btn-outline {
-          color: white;
-          border-color: rgba(255,255,255,0.3);
-        }
-
-        .elegant-about .elegant-btn-outline:hover {
+        .section-divider {
+          width: 60px;
+          height: 1px;
           background: var(--gold-500);
-          border-color: var(--gold-500);
+          margin: 0 auto var(--space-4);
         }
 
-        .elegant-footer {
-          padding: var(--space-8) var(--space-6);
-          background: var(--dark-500);
-          color: white;
+        .section-header p {
+          font-size: 15px;
+          color: var(--dark-100);
+          opacity: 0.7;
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--space-7);
+        }
+
+        .feature-card {
+          text-align: center;
+          padding: var(--space-6);
+        }
+
+        .feature-icon {
+          width: 80px;
+          height: 80px;
+          margin: 0 auto var(--space-5);
+          border: 1px solid var(--gold-400);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 28px;
+        }
+
+        .feature-card h3 {
+          font-size: 22px;
+          color: var(--dark-300);
+          margin-bottom: var(--space-3);
+        }
+
+        .feature-card p {
+          font-size: 14px;
+          color: var(--dark-100);
+          opacity: 0.7;
+          line-height: 1.8;
+        }
+
+        /* === Collection Section === */
+        .collection {
+          padding: var(--space-10) 0;
+          background: var(--dark-400);
+          color: var(--white);
+        }
+
+        .collection .section-label {
+          color: var(--gold-400);
+        }
+
+        .collection .section-header h2 {
+          color: var(--white);
+        }
+
+        .collection .section-header p {
+          color: var(--gold-200);
+        }
+
+        .collection-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--space-5);
+        }
+
+        .collection-item {
+          position: relative;
+          aspect-ratio: 3/4;
+          background: var(--dark-300);
+          overflow: hidden;
+          cursor: pointer;
+        }
+
+        .collection-item::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%);
+          z-index: 1;
+        }
+
+        .collection-bg {
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(145deg, var(--dark-200), var(--dark-300));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .collection-watch {
+          width: 120px;
+          height: 120px;
+          background: var(--dark-400);
+          border-radius: 50%;
+          border: 3px solid var(--gold-500);
+        }
+
+        .collection-info {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: var(--space-5);
+          z-index: 2;
+        }
+
+        .collection-name {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 24px;
+          color: var(--white);
+          margin-bottom: var(--space-1);
+        }
+
+        .collection-price {
+          font-size: 13px;
+          color: var(--gold-400);
+          letter-spacing: 0.1em;
+        }
+
+        /* === Quote Section === */
+        .quote {
+          padding: var(--space-10) 0;
+          background: var(--cream);
           text-align: center;
         }
 
-        .elegant-footer-logo {
+        .quote-container {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .quote-mark {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 120px;
+          color: var(--gold-400);
+          line-height: 0.5;
+          margin-bottom: var(--space-4);
+        }
+
+        .quote-text {
           font-family: 'Cormorant Garamond', serif;
           font-size: 32px;
-          font-weight: 600;
-          letter-spacing: 4px;
+          font-style: italic;
+          color: var(--dark-300);
+          line-height: 1.6;
           margin-bottom: var(--space-5);
         }
 
-        .elegant-footer-links {
-          display: flex;
-          justify-content: center;
-          gap: var(--space-6);
-          list-style: none;
-          margin-bottom: var(--space-5);
-        }
-
-        .elegant-footer-links a {
-          color: rgba(255,255,255,0.5);
-          text-decoration: none;
-          font-size: 11px;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-        }
-
-        .elegant-footer-copyright {
+        .quote-author {
           font-size: 12px;
-          color: rgba(255,255,255,0.3);
-          letter-spacing: 1px;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--gold-600);
         }
 
-        .elegant-back-link {
-          position: fixed;
-          bottom: var(--space-6);
-          right: var(--space-6);
+        /* === CTA Section === */
+        .cta {
+          padding: var(--space-9) 0;
           background: var(--dark-300);
-          color: white;
+          text-align: center;
+        }
+
+        .cta h2 {
+          font-size: 36px;
+          color: var(--white);
+          margin-bottom: var(--space-4);
+        }
+
+        .cta p {
+          font-size: 15px;
+          color: var(--gold-300);
+          margin-bottom: var(--space-6);
+          max-width: 500px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* === Footer === */
+        .footer {
+          padding: var(--space-8) 0;
+          background: var(--dark-500);
+          color: var(--gold-300);
+        }
+
+        .footer-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .footer .logo {
+          color: var(--white);
+        }
+
+        .footer-links {
+          display: flex;
+          gap: var(--space-6);
+        }
+
+        .footer-links a {
+          font-size: 11px;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: var(--gold-400);
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+          color: var(--gold-200);
+        }
+
+        .footer-bottom {
+          margin-top: var(--space-6);
+          padding-top: var(--space-5);
+          border-top: 1px solid var(--dark-300);
+          text-align: center;
+          font-size: 12px;
+          color: var(--dark-100);
+          opacity: 0.5;
+        }
+
+        /* Back link */
+        .back-link {
+          position: fixed;
+          bottom: var(--space-5);
+          left: var(--space-5);
           padding: var(--space-3) var(--space-5);
+          background: var(--white);
+          color: var(--dark-300);
           text-decoration: none;
           font-size: 11px;
-          letter-spacing: 2px;
+          font-weight: 500;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
-          transition: all 0.3s;
+          border: 1px solid var(--gold-400);
           z-index: 100;
+          transition: all 0.3s;
         }
 
-        .elegant-back-link:hover {
-          background: var(--gold-500);
+        .back-link:hover {
+          background: var(--dark-300);
+          color: var(--white);
+          border-color: var(--dark-300);
         }
 
+        /* Responsive */
         @media (max-width: 1024px) {
-          .elegant-products-grid { grid-template-columns: 1fr; max-width: 400px; }
+          .hero-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+          }
+          .hero-content {
+            max-width: 100%;
+          }
+          .hero-cta {
+            justify-content: center;
+          }
+          .hero-visual {
+            display: none;
+          }
+          .features-grid,
+          .collection-grid {
+            grid-template-columns: 1fr;
+          }
+          .nav-links {
+            display: none;
+          }
         }
 
         @media (max-width: 768px) {
-          .elegant-hero h1 { font-size: 48px; }
-          .elegant-nav-links { display: none; }
+          .hero-content h1 { font-size: 48px; }
+          .footer-container {
+            flex-direction: column;
+            gap: var(--space-5);
+          }
         }
       `}</style>
 
-      <nav className="elegant-nav">
-        <div className="elegant-logo">LUMIÈRE</div>
-        <ul className="elegant-nav-links">
-          <li><a href="#">컬렉션</a></li>
-          <li><a href="#">헤리티지</a></li>
-          <li><a href="#">매장 안내</a></li>
-          <li><a href="#">서비스</a></li>
-        </ul>
-        <a href="#" className="elegant-btn elegant-btn-outline">예약 상담</a>
+      <Link href="/" className="back-link">← Gallery</Link>
+
+      <nav className="nav">
+        <div className="container nav-container">
+          <a href="#" className="logo">LUMIÈRE</a>
+          <div className="nav-links">
+            <a href="#collection">Collection</a>
+            <a href="#craftsmanship">Craftsmanship</a>
+            <a href="#heritage">Heritage</a>
+            <a href="#boutiques">Boutiques</a>
+          </div>
+          <div className="nav-actions">
+            <a href="#" className="btn btn-outline">Contact</a>
+          </div>
+        </div>
       </nav>
 
-      <section className="elegant-hero">
-        <div className="elegant-hero-label">Since 1892</div>
-        <h1>시간을 담는 예술</h1>
-        <p>
-          130년 전통의 스위스 장인 정신으로 완성된 타임피스.
-          세대를 넘어 전해지는 가치를 경험하십시오.
-        </p>
-        <div className="elegant-hero-actions">
-          <a href="#" className="elegant-btn elegant-btn-primary">컬렉션 보기</a>
-          <a href="#" className="elegant-btn elegant-btn-outline">브랜드 스토리</a>
-        </div>
-      </section>
-
-      <div className="elegant-divider"></div>
-
-      <section className="elegant-collection">
-        <div className="elegant-section-header">
-          <div className="elegant-section-label">New Collection</div>
-          <h2 className="elegant-section-title">2024 Signature</h2>
-        </div>
-        <div className="elegant-products-grid">
-          <div className="elegant-product-card">
-            <div className="elegant-product-image">⌚</div>
-            <h3>Éternité</h3>
-            <p>플래티넘 케이스, 문페이즈 컴플리케이션</p>
-            <span className="elegant-product-price">₩ 128,000,000</span>
+      <section className="hero">
+        <div className="container hero-container">
+          <div className="hero-content">
+            <p className="hero-tagline">Swiss Haute Horlogerie Since 1847</p>
+            <h1>Time, <em>Redefined</em></h1>
+            <p className="hero-description">
+              각각의 타임피스는 175년 전통의 장인정신과 현대적 혁신이 만나
+              탄생한 예술 작품입니다. 시간을 넘어 세대를 잇는 가치를 경험하세요.
+            </p>
+            <div className="hero-cta">
+              <a href="#" className="btn btn-primary">Explore Collection</a>
+              <a href="#" className="btn btn-outline">Book Appointment</a>
+            </div>
           </div>
-          <div className="elegant-product-card">
-            <div className="elegant-product-image">⌚</div>
-            <h3>Élégance</h3>
-            <p>로즈골드 케이스, 퍼페추얼 캘린더</p>
-            <span className="elegant-product-price">₩ 85,000,000</span>
-          </div>
-          <div className="elegant-product-card">
-            <div className="elegant-product-image">⌚</div>
-            <h3>Classique</h3>
-            <p>화이트골드 케이스, 미닛 리피터</p>
-            <span className="elegant-product-price">₩ 156,000,000</span>
+          <div className="hero-visual">
+            <div className="watch-display">
+              <div className="watch-inner">
+                <div className="watch-face">LUMIÈRE</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="elegant-about">
-        <h2>장인의 손끝에서 탄생하다</h2>
-        <p>
-          각각의 타임피스는 숙련된 마스터 워치메이커의 손에서 800시간 이상의 정성을 거쳐 완성됩니다.
-          세상에 단 하나뿐인 시계를 소유하십시오.
-        </p>
-        <a href="#" className="elegant-btn elegant-btn-outline">제작 과정 보기</a>
+      <section id="craftsmanship" className="features">
+        <div className="container">
+          <div className="section-header">
+            <p className="section-label">Craftsmanship</p>
+            <h2>The Art of Excellence</h2>
+            <div className="section-divider"></div>
+            <p>한 세기를 넘어 전해지는 장인정신</p>
+          </div>
+
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="feature-icon">⏱️</div>
+              <h3>In-House Movement</h3>
+              <p>모든 무브먼트는 스위스 제네바 공방에서 자체 설계되고 제작됩니다. 300개 이상의 부품이 완벽한 조화를 이룹니다.</p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon">💎</div>
+              <h3>Precious Materials</h3>
+              <p>18K 골드, 플래티넘, 그리고 엄선된 다이아몬드만을 사용합니다. 모든 재료는 윤리적으로 조달됩니다.</p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon">♾️</div>
+              <h3>Lifetime Heritage</h3>
+              <p>영구 보증과 함께 세대를 넘어 전해지는 유산이 됩니다. 우리의 타임피스는 시간을 초월합니다.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <footer className="elegant-footer">
-        <div className="elegant-footer-logo">LUMIÈRE</div>
-        <ul className="elegant-footer-links">
-          <li><a href="#">개인정보처리방침</a></li>
-          <li><a href="#">이용약관</a></li>
-          <li><a href="#">고객센터</a></li>
-        </ul>
-        <p className="elegant-footer-copyright">© 2024 LUMIÈRE. All Rights Reserved.</p>
+      <section id="collection" className="collection">
+        <div className="container">
+          <div className="section-header">
+            <p className="section-label">The Collection</p>
+            <h2>Timeless Elegance</h2>
+            <div className="section-divider"></div>
+            <p>각각의 컬렉션은 고유한 이야기를 담고 있습니다</p>
+          </div>
+
+          <div className="collection-grid">
+            <div className="collection-item">
+              <div className="collection-bg">
+                <div className="collection-watch"></div>
+              </div>
+              <div className="collection-info">
+                <h3 className="collection-name">Éternité</h3>
+                <p className="collection-price">From ₩45,000,000</p>
+              </div>
+            </div>
+
+            <div className="collection-item">
+              <div className="collection-bg">
+                <div className="collection-watch"></div>
+              </div>
+              <div className="collection-info">
+                <h3 className="collection-name">Héritage</h3>
+                <p className="collection-price">From ₩78,000,000</p>
+              </div>
+            </div>
+
+            <div className="collection-item">
+              <div className="collection-bg">
+                <div className="collection-watch"></div>
+              </div>
+              <div className="collection-info">
+                <h3 className="collection-name">Prestige</h3>
+                <p className="collection-price">From ₩120,000,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="quote">
+        <div className="container quote-container">
+          <div className="quote-mark">"</div>
+          <p className="quote-text">
+            진정한 럭셔리는 시간이 흘러도 변하지 않는 가치에 있습니다.
+            Lumière는 그 가치를 175년간 지켜왔습니다.
+          </p>
+          <p className="quote-author">— Pierre Lumière, Founder</p>
+        </div>
+      </section>
+
+      <section className="cta">
+        <div className="container">
+          <h2>Experience Lumière</h2>
+          <p>전 세계 부티크에서 개인 컨설팅을 예약하세요</p>
+          <a href="#" className="btn btn-gold">Book Private Appointment</a>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-container">
+            <a href="#" className="logo">LUMIÈRE</a>
+            <div className="footer-links">
+              <a href="#">Collections</a>
+              <a href="#">Boutiques</a>
+              <a href="#">Services</a>
+              <a href="#">Contact</a>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>© 2024 Lumière. Swiss Haute Horlogerie Since 1847.</p>
+          </div>
+        </div>
       </footer>
-
-      <Link href="/" className="elegant-back-link">← 갤러리로</Link>
     </>
   );
 }

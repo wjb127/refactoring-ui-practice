@@ -3,6 +3,13 @@ import styles from "./page.module.css";
 
 const styleCards = [
   {
+    id: "balanced",
+    name: "Balanced & Neutral",
+    description: "Cyan 팔레트, 중간 radius, 균형잡힌 톤. Refactoring UI 원칙의 기본 적용 예시.",
+    features: ["Cyan palette", "Medium radius", "Balanced tone"],
+    style: "balanced",
+  },
+  {
     id: "playful",
     name: "Playful & Friendly",
     description: "둥근 코너, 밝은 그라데이션, 친근한 언어. 소비자 대상 SaaS에 적합한 따뜻한 느낌.",
@@ -67,7 +74,7 @@ export default function Home() {
         <div className={styles.headerContent}>
           <div>
             <h1>Refactoring UI Style Gallery</h1>
-            <p className={styles.subtitle}>8가지 다른 디자인 스타일 조합</p>
+            <p className={styles.subtitle}>9가지 다른 디자인 스타일 조합</p>
           </div>
         </div>
       </header>

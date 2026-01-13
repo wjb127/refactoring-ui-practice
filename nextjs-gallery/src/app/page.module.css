@@ -120,6 +120,33 @@
   color: var(--grey-600);
 }
 
+/* Style 0: Balanced */
+.balanced .cardPreview {
+  background: linear-gradient(135deg, #14919B 0%, #0A6C74 100%);
+}
+.balanced .cardTag { color: #0E7C86; }
+.balanced .cardPreview::after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 120px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.balanced .cardPreview::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 8px;
+  top: 20px;
+  left: 30px;
+}
+
 /* Style 1: Playful */
 .playful .cardPreview {
   background: linear-gradient(135deg, #A78BFA 0%, #F472B6 100%);
