@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --grey-050: #F0F4F8;
+  --grey-100: #D9E2EC;
+  --grey-200: #BCCCDC;
+  --grey-400: #829AB1;
+  --grey-500: #627D98;
+  --grey-600: #486581;
+  --grey-700: #334E68;
+  --grey-800: #243B53;
+  --grey-900: #102A43;
+}
+
+body {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}

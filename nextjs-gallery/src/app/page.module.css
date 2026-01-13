@@ -1,0 +1,313 @@
+.container {
+  min-height: 100vh;
+  background: var(--grey-050);
+  color: var(--grey-800);
+}
+
+.header {
+  background: white;
+  border-bottom: 1px solid var(--grey-100);
+  padding: 24px 0;
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerContent h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--grey-500);
+  font-size: 14px;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.intro {
+  max-width: 700px;
+  margin-bottom: 48px;
+}
+
+.intro h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.intro p {
+  font-size: 18px;
+  color: var(--grey-600);
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(16, 42, 67, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(16, 42, 67, 0.15);
+}
+
+.cardPreview {
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardContent {
+  padding: 24px;
+}
+
+.cardTag {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.cardContent h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.cardContent p {
+  color: var(--grey-500);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.cardFeatures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.featureTag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--grey-100);
+  color: var(--grey-600);
+}
+
+/* Style 1: Playful */
+.playful .cardPreview {
+  background: linear-gradient(135deg, #A78BFA 0%, #F472B6 100%);
+}
+.playful .cardTag { color: #7C3AED; }
+.playful .cardPreview::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  top: 20px;
+  right: 30px;
+}
+.playful .cardPreview::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  bottom: 30px;
+  left: 40px;
+}
+
+/* Style 2: Professional */
+.professional .cardPreview {
+  background: linear-gradient(135deg, #1E3A5F 0%, #3B5998 100%);
+}
+.professional .cardTag { color: #1E3A5F; }
+.professional .cardPreview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.03) 40px,
+    rgba(255,255,255,0.03) 80px
+  );
+}
+
+/* Style 3: Elegant */
+.elegant .cardPreview {
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+}
+.elegant .cardTag { color: #D4AF37; }
+.elegant .cardPreview::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.elegant .cardPreview::before {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Style 4: Bold */
+.bold .cardPreview {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+}
+.bold .cardTag { color: #FF6B35; }
+.bold .cardPreview::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 173px solid rgba(255,255,255,0.1);
+  top: -20px;
+  right: -30px;
+}
+
+/* Style 5: Minimal */
+.minimal .cardPreview {
+  background: #FAFAFA;
+  border-bottom: 1px solid var(--grey-100);
+}
+.minimal .cardTag { color: var(--grey-800); }
+.minimal .cardPreview::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: var(--grey-900);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.minimal .cardPreview::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: var(--grey-900);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Style 6: Dark */
+.dark .cardPreview {
+  background: linear-gradient(135deg, #0D1117 0%, #161B22 100%);
+}
+.dark .cardTag { color: #58A6FF; }
+.dark .cardPreview::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(88, 166, 255, 0.2) 0%, transparent 70%);
+  top: 20px;
+  right: 20px;
+}
+.dark .cardPreview::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(163, 113, 247, 0.2) 0%, transparent 70%);
+  bottom: 20px;
+  left: 30px;
+}
+
+/* Style 7: Organic */
+.organic .cardPreview {
+  background: linear-gradient(135deg, #C1EAC5 0%, #3F9142 100%);
+}
+.organic .cardTag { color: #207227; }
+.organic .cardPreview::after {
+  content: '🌿';
+  position: absolute;
+  font-size: 80px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+/* Style 8: Gradient */
+.gradient .cardPreview {
+  background: linear-gradient(135deg, #0967D2 0%, #1CD4D4 100%);
+}
+.gradient .cardTag { color: #0967D2; }
+.gradient .cardPreview::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  top: -50px;
+  right: -50px;
+  backdrop-filter: blur(10px);
+}
+.gradient .cardPreview::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 24px;
+  bottom: 20px;
+  left: 30px;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .intro h2 {
+    font-size: 28px;
+  }
+}
