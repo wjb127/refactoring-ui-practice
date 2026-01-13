@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORM. — Digital Design Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =====================================================
+       Style 5: Minimal & Clean
+       - Monochrome + single accent color
+       - Maximum whitespace
+       - Concise text
+       - Thin lines and typography-focused
+       - Agency/portfolio feel
+       ===================================================== */
+
+    :root {
+      /* Monochrome palette */
+      --black: #000000;
+      --grey-900: #111111;
+      --grey-800: #222222;
+      --grey-700: #333333;
+      --grey-600: #555555;
+      --grey-500: #777777;
+      --grey-400: #999999;
+      --grey-300: #BBBBBB;
+      --grey-200: #DDDDDD;
+      --grey-100: #EEEEEE;
+      --grey-050: #F7F7F7;
+      --white: #FFFFFF;
+
+      /* Single accent - Red */
+      --accent: #E53935;
+      --accent-light: #FFEBEE;
+
+      /* Maximum spacing */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 16px;
+      --space-4: 24px;
+      --space-5: 40px;
+      --space-6: 64px;
+      --space-7: 96px;
+      --space-8: 128px;
+      --space-9: 160px;
+      --space-10: 200px;
+
+      /* No radius for minimal look */
+      --radius: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--grey-800);
+      background: var(--white);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-5);
+    }
+
+    /* === Navigation === */
+    .nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      padding: var(--space-4) 0;
+      background: var(--white);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-5);
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--grey-600);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--black);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--grey-800);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--black);
+      border: 1px solid var(--black);
+    }
+
+    .btn-outline:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-text {
+      background: none;
+      color: var(--grey-600);
+      padding: 0;
+    }
+
+    .btn-text:hover {
+      color: var(--black);
+    }
+
+    /* === Hero Section === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: var(--space-9) 0;
+    }
+
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 560px;
+    }
+
+    .hero-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-content h1 {
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-content h1 strong {
+      font-weight: 600;
+    }
+
+    .hero-description {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--grey-600);
+      margin-bottom: var(--space-6);
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+
+    .visual-item {
+      aspect-ratio: 1;
+      background: var(--grey-050);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-item:nth-child(2) {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .visual-item:nth-child(3) {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .visual-item span {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* === Work Section === */
+    .work {
+      padding: var(--space-9) 0;
+      border-top: 1px solid var(--grey-100);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: var(--space-7);
+    }
+
+    .section-header h2 {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
+    }
+
+    .work-item {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .work-image {
+      aspect-ratio: 16/10;
+      background: var(--grey-050);
+      margin-bottom: var(--space-4);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .work-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--black);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .work-item:hover .work-image::after {
+      opacity: 0.1;
+    }
+
+    .work-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--grey-400);
+    }
+
+    .work-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .work-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: var(--space-1);
+    }
+
+    .work-category {
+      font-size: 13px;
+      color: var(--grey-500);
+    }
+
+    .work-year {
+      font-size: 13px;
+      color: var(--grey-400);
+    }
+
+    /* === Services Section === */
+    .services {
+      padding: var(--space-9) 0;
+      background: var(--grey-050);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--grey-200);
+    }
+
+    .service-item {
+      background: var(--white);
+      padding: var(--space-6);
+    }
+
+    .service-number {
+      font-size: 12px;
+      color: var(--grey-400);
+      margin-bottom: var(--space-5);
+    }
+
+    .service-item h3 {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: var(--space-3);
+    }
+
+    .service-item p {
+      font-size: 14px;
+      color: var(--grey-600);
+      line-height: 1.7;
+    }
+
+    /* === About Section === */
+    .about {
+      padding: var(--space-9) 0;
+    }
+
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-8);
+    }
+
+    .about-label {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+    }
+
+    .about-content h2 {
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--black);
+      margin-bottom: var(--space-5);
+      letter-spacing: -0.02em;
+    }
+
+    .about-content h2 strong {
+      font-weight: 500;
+    }
+
+    .about-content p {
+      font-size: 16px;
+      color: var(--grey-600);
+      max-width: 600px;
+    }
+
+    /* === Contact Section === */
+    .contact {
+      padding: var(--space-9) 0;
+      border-top: 1px solid var(--grey-100);
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+    }
+
+    .contact-content h2 {
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: var(--space-5);
+      letter-spacing: -0.02em;
+    }
+
+    .contact-content h2 .accent {
+      color: var(--accent);
+    }
+
+    .contact-content p {
+      font-size: 16px;
+      color: var(--grey-600);
+      margin-bottom: var(--space-5);
+    }
+
+    .contact-info {
+      padding-top: var(--space-6);
+    }
+
+    .contact-item {
+      margin-bottom: var(--space-5);
+    }
+
+    .contact-item-label {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: var(--space-2);
+    }
+
+    .contact-item-value {
+      font-size: 16px;
+      color: var(--black);
+    }
+
+    .contact-item-value a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--grey-300);
+      transition: border-color 0.2s;
+    }
+
+    .contact-item-value a:hover {
+      border-color: var(--black);
+    }
+
+    /* === Footer === */
+    .footer {
+      padding: var(--space-6) 0;
+      border-top: 1px solid var(--grey-100);
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-size: 13px;
+      color: var(--grey-500);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--space-5);
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--grey-500);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--black);
+    }
+
+    /* Back link */
+    .back-link {
+      position: fixed;
+      bottom: var(--space-5);
+      left: var(--space-5);
+      padding: var(--space-3) var(--space-4);
+      background: var(--white);
+      color: var(--black);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid var(--grey-200);
+      z-index: 100;
+      transition: all 0.2s;
+    }
+
+    .back-link:hover {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+      .hero-visual {
+        display: none;
+      }
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .about-container,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="gallery.html" class="back-link">← Gallery</a>
+
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="#" class="logo">FORM.</a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="btn btn-text">Let's Talk →</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <p class="hero-label">Digital Design Studio</p>
+        <h1>We design <strong>digital experiences</strong> that matter.</h1>
+        <p class="hero-description">
+          FORM은 브랜드, 제품, 서비스를 위한 디지털 경험을 디자인합니다.
+          단순함 속에서 본질을 찾습니다.
+        </p>
+        <div class="hero-cta">
+          <a href="#work" class="btn btn-primary">View Work</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-grid">
+          <div class="visual-item"><span>Brand</span></div>
+          <div class="visual-item"><span>Digital</span></div>
+          <div class="visual-item"><span>Design</span></div>
+          <div class="visual-item"><span>Motion</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="work">
+    <div class="container">
+      <div class="section-header">
+        <h2>Selected Work</h2>
+        <a href="#" class="btn btn-text">View All →</a>
+      </div>
+
+      <div class="work-grid">
+        <a href="#" class="work-item">
+          <div class="work-image">
+            <div class="work-placeholder">Project Image</div>
+          </div>
+          <div class="work-info">
+            <div>
+              <h3 class="work-title">Naver Financial</h3>
+              <p class="work-category">Brand Identity, Web Design</p>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+        </a>
+
+        <a href="#" class="work-item">
+          <div class="work-image">
+            <div class="work-placeholder">Project Image</div>
+          </div>
+          <div class="work-info">
+            <div>
+              <h3 class="work-title">Kakao Makers</h3>
+              <p class="work-category">Product Design, Motion</p>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+        </a>
+
+        <a href="#" class="work-item">
+          <div class="work-image">
+            <div class="work-placeholder">Project Image</div>
+          </div>
+          <div class="work-info">
+            <div>
+              <h3 class="work-title">LINE Music</h3>
+              <p class="work-category">UI/UX Design</p>
+            </div>
+            <span class="work-year">2023</span>
+          </div>
+        </a>
+
+        <a href="#" class="work-item">
+          <div class="work-image">
+            <div class="work-placeholder">Project Image</div>
+          </div>
+          <div class="work-info">
+            <div>
+              <h3 class="work-title">Samsung Design</h3>
+              <p class="work-category">Digital Campaign</p>
+            </div>
+            <span class="work-year">2023</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-header">
+        <h2>Services</h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-number">01</div>
+          <h3>Brand Identity</h3>
+          <p>로고, 비주얼 시스템, 브랜드 가이드라인을 통해 일관된 브랜드 경험을 설계합니다.</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-number">02</div>
+          <h3>Web Design</h3>
+          <p>비즈니스 목표에 부합하는 웹사이트를 디자인하고 개발합니다.</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-number">03</div>
+          <h3>Product Design</h3>
+          <p>사용자 중심의 디지털 제품 경험을 설계합니다. UX 리서치부터 UI 디자인까지.</p>
+        </div>
+
+        <div class="service-item">
+          <div class="service-number">04</div>
+          <h3>Motion Design</h3>
+          <p>인터랙션과 모션을 통해 디지털 경험에 생명을 불어넣습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container about-container">
+      <p class="about-label">About</p>
+      <div class="about-content">
+        <h2>
+          우리는 <strong>본질에 집중</strong>합니다.<br>
+          불필요한 것을 제거하고<br>
+          진정으로 중요한 것만 남깁니다.
+        </h2>
+        <p>
+          2015년 설립된 FORM은 서울을 기반으로 국내외 기업들과 협업하고 있습니다.
+          네이버, 카카오, 삼성, LINE 등과 함께 디지털 경험을 만들어왔습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container contact-container">
+      <div class="contact-content">
+        <h2>
+          새로운 프로젝트가<br>
+          <span class="accent">있으신가요?</span>
+        </h2>
+        <p>
+          프로젝트에 대해 이야기 나눠보고 싶습니다.<br>
+          편하게 연락 주세요.
+        </p>
+        <a href="mailto:hello@form.studio" class="btn btn-primary">Start a Project</a>
+      </div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <p class="contact-item-label">Email</p>
+          <p class="contact-item-value"><a href="mailto:hello@form.studio">hello@form.studio</a></p>
+        </div>
+        <div class="contact-item">
+          <p class="contact-item-label">Phone</p>
+          <p class="contact-item-value">02-1234-5678</p>
+        </div>
+        <div class="contact-item">
+          <p class="contact-item-label">Location</p>
+          <p class="contact-item-value">Seoul, South Korea</p>
+        </div>
+        <div class="contact-item">
+          <p class="contact-item-label">Social</p>
+          <p class="contact-item-value">
+            <a href="#">Instagram</a> · <a href="#">Behance</a> · <a href="#">LinkedIn</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <p class="footer-left">© 2024 FORM. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

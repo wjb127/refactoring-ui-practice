@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refactoring UI - Style Gallery</title>
+  <style>
+    :root {
+      --grey-050: #F0F4F8;
+      --grey-100: #D9E2EC;
+      --grey-200: #BCCCDC;
+      --grey-400: #829AB1;
+      --grey-500: #627D98;
+      --grey-600: #486581;
+      --grey-700: #334E68;
+      --grey-800: #243B53;
+      --grey-900: #102A43;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--grey-050);
+      min-height: 100vh;
+      color: var(--grey-800);
+    }
+
+    .header {
+      background: white;
+      border-bottom: 1px solid var(--grey-100);
+      padding: 24px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      color: var(--grey-500);
+      font-size: 14px;
+    }
+
+    .main {
+      padding: 48px 0;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin-bottom: 48px;
+    }
+
+    .intro h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .intro p {
+      font-size: 18px;
+      color: var(--grey-600);
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(16, 42, 67, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(16, 42, 67, 0.15);
+    }
+
+    .card-preview {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .card-tag {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--grey-500);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .card-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .feature-tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--grey-100);
+      color: var(--grey-600);
+    }
+
+    /* Style 1: Playful */
+    .style-playful .card-preview {
+      background: linear-gradient(135deg, #A78BFA 0%, #F472B6 100%);
+    }
+    .style-playful .card-tag { color: #7C3AED; }
+    .style-playful .card-preview::after {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      top: 20px;
+      right: 30px;
+    }
+    .style-playful .card-preview::before {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      bottom: 30px;
+      left: 40px;
+    }
+
+    /* Style 2: Professional */
+    .style-professional .card-preview {
+      background: linear-gradient(135deg, #1E3A5F 0%, #3B5998 100%);
+    }
+    .style-professional .card-tag { color: #1E3A5F; }
+    .style-professional .card-preview::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.03) 40px,
+        rgba(255,255,255,0.03) 80px
+      );
+    }
+
+    /* Style 3: Elegant */
+    .style-elegant .card-preview {
+      background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+    }
+    .style-elegant .card-tag { color: #D4AF37; }
+    .style-elegant .card-preview::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .style-elegant .card-preview::before {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Style 4: Bold */
+    .style-bold .card-preview {
+      background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    }
+    .style-bold .card-tag { color: #FF6B35; }
+    .style-bold .card-preview::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 173px solid rgba(255,255,255,0.1);
+      top: -20px;
+      right: -30px;
+    }
+
+    /* Style 5: Minimal */
+    .style-minimal .card-preview {
+      background: #FAFAFA;
+      border-bottom: 1px solid var(--grey-100);
+    }
+    .style-minimal .card-tag { color: var(--grey-800); }
+    .style-minimal .card-preview::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background: var(--grey-900);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .style-minimal .card-preview::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 100px;
+      background: var(--grey-900);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Style 6: Dark */
+    .style-dark .card-preview {
+      background: linear-gradient(135deg, #0D1117 0%, #161B22 100%);
+    }
+    .style-dark .card-tag { color: #58A6FF; }
+    .style-dark .card-preview::after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(88, 166, 255, 0.2) 0%, transparent 70%);
+      top: 20px;
+      right: 20px;
+    }
+    .style-dark .card-preview::before {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(163, 113, 247, 0.2) 0%, transparent 70%);
+      bottom: 20px;
+      left: 30px;
+    }
+
+    .original-link {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 12px 24px;
+      background: var(--grey-800);
+      color: white;
+      border-radius: 8px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .original-link:hover {
+      background: var(--grey-900);
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .intro h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <div>
+        <h1>Refactoring UI Style Gallery</h1>
+        <p class="subtitle">6가지 다른 디자인 스타일 조합</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="intro">
+        <h2>같은 원칙, 다른 표현</h2>
+        <p>
+          Refactoring UI의 원칙은 동일하지만, 폰트, 색상, border-radius, 여백,
+          언어 톤 등의 조합에 따라 완전히 다른 분위기를 만들 수 있습니다.
+          6가지 스타일을 통해 이를 증명합니다.
+        </p>
+        <a href="index.html" class="original-link">← Original TaskFlow</a>
+      </div>
+
+      <div class="grid">
+        <a href="style-playful.html" class="card style-playful">
+          <div class="card-preview"></div>
+          <div class="card-content">
+            <div class="card-tag">Style 1</div>
+            <h3>Playful & Friendly</h3>
+            <p>둥근 코너, 밝은 그라데이션, 친근한 언어. 소비자 대상 SaaS에 적합한 따뜻한 느낌.</p>
+            <div class="card-features">
+              <span class="feature-tag">Large radius</span>
+              <span class="feature-tag">Pastel colors</span>
+              <span class="feature-tag">Casual tone</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="style-professional.html" class="card style-professional">
+          <div class="card-preview"></div>
+          <div class="card-content">
+            <div class="card-tag">Style 2</div>
+            <h3>Professional & Corporate</h3>
+            <p>작은 코너, 차분한 블루 계열, 격식 있는 언어. 기업 고객을 위한 신뢰감.</p>
+            <div class="card-features">
+              <span class="feature-tag">Small radius</span>
+              <span class="feature-tag">Blue palette</span>
+              <span class="feature-tag">Formal tone</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="style-elegant.html" class="card style-elegant">
+          <div class="card-preview"></div>
+          <div class="card-content">
+            <div class="card-tag">Style 3</div>
+            <h3>Elegant & Luxury</h3>
+            <p>세리프 폰트, 골드/다크 색상 조합, 넓은 여백. 프리미엄 제품에 적합한 고급스러움.</p>
+            <div class="card-features">
+              <span class="feature-tag">Serif font</span>
+              <span class="feature-tag">Gold accents</span>
+              <span class="feature-tag">Wide spacing</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="style-bold.html" class="card style-bold">
+          <div class="card-preview"></div>
+          <div class="card-content">
+            <div class="card-tag">Style 4</div>
+            <h3>Bold & Energetic</h3>
+            <p>큰 타이포그래피, 강렬한 오렌지, 기하학적 요소. 혁신적인 스타트업 느낌.</p>
+            <div class="card-features">
+              <span class="feature-tag">Large typography</span>
+              <span class="feature-tag">Vibrant orange</span>
+              <span class="feature-tag">Geometric</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="style-minimal.html" class="card style-minimal">
+          <div class="card-preview"></div>
+          <div class="card-content">
+            <div class="card-tag">Style 5</div>
+            <h3>Minimal & Clean</h3>
+            <p>흑백 기반, 단일 포인트 색상, 넓은 여백. 에이전시나 포트폴리오에 적합.</p>
+            <div class="card-features">
+              <span class="feature-tag">Monochrome</span>
+              <span class="feature-tag">Max whitespace</span>
+              <span class="feature-tag">Single accent</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="style-dark.html" class="card style-dark">
+          <div class="card-preview"></div>
+          <div class="card-content">
+            <div class="card-tag">Style 6</div>
+            <h3>Dark Mode Tech</h3>
+            <p>다크 배경, 네온 블루/퍼플 액센트, 코드 스니펫. 개발자 도구에 최적화.</p>
+            <div class="card-features">
+              <span class="feature-tag">Dark background</span>
+              <span class="feature-tag">Neon accents</span>
+              <span class="feature-tag">Dev-friendly</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
