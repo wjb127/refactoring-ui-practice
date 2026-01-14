@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function BalancedPage() {
   return (
@@ -262,93 +263,21 @@ export default function BalancedPage() {
           color: var(--grey-500);
         }
 
-        /* App Preview */
-        .app-preview {
-          background: white;
+        /* Hero Visual */
+        .hero-visual {
+          position: relative;
+        }
+
+        .hero-image {
           border-radius: var(--radius-xl);
           box-shadow: var(--shadow-2xl);
           overflow: hidden;
         }
 
-        .preview-header {
-          background: var(--grey-100);
-          padding: var(--space-3) var(--space-4);
-        }
-
-        .preview-dots {
-          display: flex;
-          gap: var(--space-2);
-        }
-
-        .preview-dots span {
-          width: 12px;
-          height: 12px;
-          border-radius: var(--radius-full);
-          background: var(--grey-300);
-        }
-
-        .preview-content {
-          display: flex;
-          min-height: 300px;
-        }
-
-        .preview-sidebar {
-          width: 80px;
-          background: var(--grey-050);
-          padding: var(--space-4);
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-3);
-        }
-
-        .sidebar-item {
-          height: 40px;
-          border-radius: var(--radius-md);
-          background: var(--grey-200);
-        }
-
-        .sidebar-item.active {
-          background: var(--cyan-500);
-        }
-
-        .preview-main {
-          flex: 1;
-          padding: var(--space-5);
-          display: flex;
-          gap: var(--space-4);
-        }
-
-        .preview-card {
-          flex: 1;
-          background: var(--grey-050);
-          border-radius: var(--radius-md);
-          padding: var(--space-4);
-        }
-
-        .card-header {
-          height: 20px;
-          width: 60%;
-          background: var(--grey-300);
-          border-radius: var(--radius-sm);
-          margin-bottom: var(--space-4);
-        }
-
-        .card-tasks {
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-3);
-        }
-
-        .task {
-          height: 32px;
-          background: white;
-          border-radius: var(--radius-sm);
-          border-left: 3px solid var(--grey-300);
-        }
-
-        .task.done {
-          border-left-color: var(--cyan-500);
-          opacity: 0.7;
+        .hero-image img {
+          display: block;
+          width: 100%;
+          height: auto;
         }
 
         /* Section Styles */
@@ -438,6 +367,25 @@ export default function BalancedPage() {
         .feature-card p {
           color: var(--grey-600);
           line-height: 1.7;
+        }
+
+        .features-visual {
+          margin-top: var(--space-8);
+          display: flex;
+          justify-content: center;
+        }
+
+        .features-image {
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          box-shadow: var(--shadow-lg);
+        }
+
+        .features-image img {
+          display: block;
+          width: 100%;
+          max-width: 800px;
+          height: auto;
         }
 
         /* Stats Section */
@@ -649,11 +597,95 @@ export default function BalancedPage() {
           flex-shrink: 0;
         }
 
+        /* Team Section */
+        .team {
+          padding: var(--space-10) 0;
+          background: white;
+        }
+
+        .team-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--space-8);
+          align-items: center;
+        }
+
+        .team-text h2 {
+          font-size: var(--text-4xl);
+          font-weight: 700;
+          margin-bottom: var(--space-4);
+          color: var(--grey-900);
+        }
+
+        .team-text p {
+          font-size: var(--text-lg);
+          color: var(--grey-600);
+          line-height: 1.7;
+          margin-bottom: var(--space-5);
+        }
+
+        .team-features {
+          list-style: none;
+        }
+
+        .team-features li {
+          display: flex;
+          align-items: center;
+          gap: var(--space-3);
+          padding: var(--space-2) 0;
+          color: var(--grey-700);
+        }
+
+        .team-features li svg {
+          width: 20px;
+          height: 20px;
+          color: var(--cyan-600);
+          flex-shrink: 0;
+        }
+
+        .team-image {
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          box-shadow: var(--shadow-xl);
+        }
+
+        .team-image img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
+        @media (max-width: 1024px) {
+          .team-content {
+            grid-template-columns: 1fr;
+          }
+        }
+
         /* CTA Section */
         .cta {
           padding: var(--space-10) 0;
           background: linear-gradient(135deg, var(--cyan-600) 0%, var(--cyan-800) 100%);
           text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cta-bg {
+          position: absolute;
+          inset: 0;
+          opacity: 0.15;
+          z-index: 0;
+        }
+
+        .cta-bg img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .cta .container {
+          position: relative;
+          z-index: 1;
         }
 
         .cta h2 {
@@ -839,37 +871,14 @@ export default function BalancedPage() {
             <p className="hero-note">신용카드 없이 시작 가능</p>
           </div>
           <div className="hero-visual">
-            <div className="app-preview">
-              <div className="preview-header">
-                <div className="preview-dots">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <div className="preview-content">
-                <div className="preview-sidebar">
-                  <div className="sidebar-item active"></div>
-                  <div className="sidebar-item"></div>
-                  <div className="sidebar-item"></div>
-                  <div className="sidebar-item"></div>
-                </div>
-                <div className="preview-main">
-                  <div className="preview-card">
-                    <div className="card-header"></div>
-                    <div className="card-tasks">
-                      <div className="task done"></div>
-                      <div className="task done"></div>
-                      <div className="task"></div>
-                    </div>
-                  </div>
-                  <div className="preview-card">
-                    <div className="card-header"></div>
-                    <div className="card-tasks">
-                      <div className="task"></div>
-                      <div className="task"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="hero-image">
+              <Image
+                src="/images/balanced/hero.png"
+                alt="TaskFlow Dashboard - Modern SaaS interface"
+                width={600}
+                height={400}
+                priority
+              />
             </div>
           </div>
         </div>
@@ -906,6 +915,17 @@ export default function BalancedPage() {
               <div className="feature-icon pink">🔔</div>
               <h3>스마트 알림</h3>
               <p>중요한 업데이트만 받아보세요. AI가 우선순위를 분석해 꼭 필요한 알림만 전달합니다.</p>
+            </div>
+          </div>
+
+          <div className="features-visual">
+            <div className="features-image">
+              <Image
+                src="/images/balanced/feature.png"
+                alt="Data analytics workflow illustration"
+                width={800}
+                height={600}
+              />
             </div>
           </div>
         </div>
@@ -1098,7 +1118,58 @@ export default function BalancedPage() {
         </div>
       </section>
 
+      <section className="team">
+        <div className="container">
+          <div className="team-content">
+            <div className="team-text">
+              <h2>함께하는 팀, 더 큰 성과</h2>
+              <p>
+                TaskFlow는 팀원들이 자연스럽게 협업하고 소통할 수 있는 환경을 만들어줍니다.
+                위치와 시간에 상관없이 모두가 같은 목표를 향해 나아갈 수 있습니다.
+              </p>
+              <ul className="team-features">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                  실시간 상태 공유와 진행률 추적
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                  자동화된 워크플로우와 알림
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                  직관적인 대시보드와 리포트
+                </li>
+              </ul>
+            </div>
+            <div className="team-image">
+              <Image
+                src="/images/balanced/team.png"
+                alt="Professional team collaborating at modern office"
+                width={600}
+                height={400}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="cta">
+        <div className="cta-bg">
+          <Image
+            src="/images/balanced/background.png"
+            alt=""
+            width={1920}
+            height={600}
+            aria-hidden="true"
+          />
+        </div>
         <div className="container">
           <h2>지금 바로 시작하세요</h2>
           <p>14일 무료 체험으로 TaskFlow의 모든 기능을 경험해보세요</p>
