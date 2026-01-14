@@ -63,10 +63,10 @@ export default function DarkPage() {
           --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
           --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-          /* Border Radius */
-          --radius-sm: 4px;
-          --radius-md: 8px;
-          --radius-lg: 12px;
+          /* Border Radius - Sharp for dev tools aesthetic */
+          --radius-sm: 3px;
+          --radius-md: 6px;
+          --radius-lg: 8px;
 
           /* Shadows - Glow Effect */
           --glow-blue: 0 0 20px rgba(88, 166, 255, 0.3);
@@ -122,12 +122,13 @@ export default function DarkPage() {
         .logo-icon {
           width: 32px;
           height: 32px;
-          background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+          background: var(--accent-blue);
           border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 14px;
+          color: var(--bg-primary);
         }
 
         .nav-links {
@@ -178,12 +179,13 @@ export default function DarkPage() {
         }
 
         .btn-primary {
-          background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-          color: white;
+          background: var(--accent-blue);
+          color: var(--bg-primary);
+          font-weight: 600;
         }
 
         .btn-primary:hover {
-          box-shadow: var(--glow-blue);
+          background: #79B8FF;
           transform: translateY(-1px);
         }
 
@@ -220,7 +222,7 @@ export default function DarkPage() {
           padding: var(--space-1) var(--space-3);
           background: var(--bg-secondary);
           border: 1px solid var(--border-default);
-          border-radius: 100px;
+          border-radius: var(--radius-sm);
           font-size: 13px;
           color: var(--text-secondary);
           margin-bottom: var(--space-6);
@@ -244,10 +246,11 @@ export default function DarkPage() {
           font-weight: 700;
           line-height: 1.1;
           margin-bottom: var(--space-5);
-          background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue) 50%, var(--accent-purple) 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: var(--text-primary);
+        }
+
+        .hero h1 span {
+          color: var(--accent-blue);
         }
 
         .hero p {
@@ -538,10 +541,7 @@ export default function DarkPage() {
           font-family: var(--font-mono);
           font-size: 48px;
           font-weight: 700;
-          background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: var(--accent-blue);
           margin-bottom: var(--space-2);
         }
 
@@ -581,12 +581,12 @@ export default function DarkPage() {
           top: calc(var(--space-4) * -1);
           left: 50%;
           transform: translateX(-50%);
-          background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-          color: white;
+          background: var(--accent-blue);
+          color: var(--bg-primary);
           font-size: 12px;
           font-weight: 600;
           padding: var(--space-1) var(--space-3);
-          border-radius: 100px;
+          border-radius: var(--radius-sm);
         }
 
         .pricing-name {
@@ -872,7 +872,7 @@ export default function DarkPage() {
           <span className="hero-badge-dot"></span>
           v2.0 릴리즈 - 새로운 기능 확인하기
         </div>
-        <h1>개발자를 위한<br />통합 API 플랫폼</h1>
+        <h1>개발자를 위한<br /><span>통합 API 플랫폼</span></h1>
         <p>결제, 인증, 알림, 분석까지. 복잡한 백엔드를 단 몇 줄의 코드로 구현하세요. 확장 가능하고 안정적인 인프라를 제공합니다.</p>
         <div className="hero-actions">
           <a href="#" className="btn btn-primary btn-large">무료로 시작하기</a>

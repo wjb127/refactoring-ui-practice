@@ -71,12 +71,12 @@ export default function GradientPage() {
           --space-9: 96px;
           --space-10: 128px;
 
-          /* Border Radius - Large for modern feel */
-          --radius-sm: 8px;
-          --radius-md: 16px;
-          --radius-lg: 24px;
-          --radius-xl: 32px;
-          --radius-full: 9999px;
+          /* Border Radius - Modern but controlled */
+          --radius-sm: 4px;
+          --radius-md: 8px;
+          --radius-lg: 12px;
+          --radius-xl: 16px;
+          --radius-full: 100px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -91,16 +91,19 @@ export default function GradientPage() {
 
         .gradient-nav {
           position: fixed;
-          top: var(--space-4);
-          left: 50%;
-          transform: translateX(-50%);
-          background: var(--glass-bg);
-          backdrop-filter: blur(16px);
-          border: 1px solid var(--glass-border);
-          border-radius: var(--radius-full);
-          padding: var(--space-3) var(--space-5);
+          top: 0;
+          left: 0;
+          right: 0;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(8px);
+          border-bottom: 1px solid var(--grey-100);
+          padding: var(--space-3) var(--space-6);
           z-index: 1000;
-          box-shadow: var(--glass-shadow);
+        }
+
+        .gradient-nav-inner {
+          max-width: 1200px;
+          margin: 0 auto;
         }
 
         .gradient-nav-container {
@@ -112,10 +115,7 @@ export default function GradientPage() {
         .gradient-logo {
           font-size: 20px;
           font-weight: 800;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: var(--blue-600);
         }
 
         .gradient-nav-links {
@@ -138,25 +138,24 @@ export default function GradientPage() {
 
         .gradient-btn {
           padding: var(--space-2) var(--space-5);
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-md);
           font-weight: 600;
           font-size: 14px;
           cursor: pointer;
-          transition: all 0.3s;
+          transition: all 0.2s;
           border: none;
           text-decoration: none;
           display: inline-block;
         }
 
         .gradient-btn-primary {
-          background: var(--gradient-primary);
+          background: var(--blue-500);
           color: white;
-          box-shadow: 0 4px 16px rgba(9, 103, 210, 0.3);
         }
 
         .gradient-btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(9, 103, 210, 0.4);
+          background: var(--blue-600);
+          transform: translateY(-1px);
         }
 
         .gradient-btn-large {
@@ -177,7 +176,7 @@ export default function GradientPage() {
 
         .gradient-hero {
           padding: var(--space-10) var(--space-6);
-          padding-top: calc(var(--space-10) + 60px);
+          padding-top: calc(var(--space-10) + 64px);
           text-align: center;
           position: relative;
           overflow: hidden;
@@ -190,8 +189,8 @@ export default function GradientPage() {
           left: -200px;
           width: 600px;
           height: 600px;
-          background: radial-gradient(circle, rgba(9, 103, 210, 0.15) 0%, transparent 70%);
-          animation: float 8s ease-in-out infinite;
+          background: radial-gradient(circle, rgba(9, 103, 210, 0.08) 0%, transparent 70%);
+          pointer-events: none;
         }
 
         .gradient-hero::after {
@@ -201,13 +200,8 @@ export default function GradientPage() {
           right: -200px;
           width: 500px;
           height: 500px;
-          background: radial-gradient(circle, rgba(28, 212, 212, 0.15) 0%, transparent 70%);
-          animation: float 8s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(30px, 30px); }
+          background: radial-gradient(circle, rgba(28, 212, 212, 0.08) 0%, transparent 70%);
+          pointer-events: none;
         }
 
         .gradient-hero-content {
@@ -219,13 +213,12 @@ export default function GradientPage() {
           display: inline-flex;
           align-items: center;
           gap: var(--space-2);
-          background: var(--glass-bg);
-          backdrop-filter: blur(8px);
-          border: 1px solid var(--glass-border);
+          background: var(--blue-050);
+          border: 1px solid var(--blue-100);
           padding: var(--space-2) var(--space-4);
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           font-size: 13px;
-          font-weight: 500;
+          font-weight: 600;
           color: var(--blue-600);
           margin-bottom: var(--space-6);
         }
@@ -239,10 +232,7 @@ export default function GradientPage() {
         }
 
         .gradient-hero h1 span {
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: var(--blue-500);
         }
 
         .gradient-hero p {
@@ -269,27 +259,21 @@ export default function GradientPage() {
 
         .gradient-card-preview {
           width: 280px;
-          background: var(--glass-bg);
-          backdrop-filter: blur(16px);
-          border: 1px solid var(--glass-border);
+          background: white;
+          border: 1px solid var(--grey-200);
           border-radius: var(--radius-lg);
           padding: var(--space-5);
-          box-shadow: var(--glass-shadow);
-          transform: rotateY(-5deg);
-          transition: transform 0.3s;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .gradient-card-preview:hover {
-          transform: rotateY(0deg) translateY(-8px);
+          transform: translateY(-4px);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
 
         .gradient-card-preview:nth-child(2) {
-          transform: rotateY(5deg);
-          margin-top: var(--space-6);
-        }
-
-        .gradient-card-preview:nth-child(2):hover {
-          transform: rotateY(0deg) translateY(-8px);
+          margin-top: var(--space-4);
         }
 
         .gradient-card-header {
@@ -302,8 +286,8 @@ export default function GradientPage() {
         .gradient-card-icon {
           width: 40px;
           height: 40px;
-          background: var(--gradient-primary);
-          border-radius: var(--radius-md);
+          background: var(--blue-100);
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -334,7 +318,7 @@ export default function GradientPage() {
         .gradient-card-chart {
           height: 60px;
           margin-top: var(--space-4);
-          background: linear-gradient(180deg, var(--cyan-100) 0%, transparent 100%);
+          background: var(--blue-050);
           border-radius: var(--radius-sm);
           position: relative;
           overflow: hidden;
@@ -347,7 +331,7 @@ export default function GradientPage() {
           left: 0;
           right: 0;
           height: 2px;
-          background: var(--gradient-primary);
+          background: var(--blue-400);
         }
 
         .gradient-features {
@@ -368,10 +352,7 @@ export default function GradientPage() {
         .gradient-section-label {
           font-size: 13px;
           font-weight: 700;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: var(--blue-500);
           text-transform: uppercase;
           letter-spacing: 2px;
           margin-bottom: var(--space-3);
@@ -413,15 +394,15 @@ export default function GradientPage() {
         }
 
         .gradient-feature-icon {
-          width: 56px;
-          height: 56px;
-          background: var(--gradient-primary);
-          border-radius: var(--radius-md);
+          width: 48px;
+          height: 48px;
+          background: var(--blue-100);
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 28px;
-          margin-bottom: var(--space-5);
+          font-size: 24px;
+          margin-bottom: var(--space-4);
         }
 
         .gradient-feature-card h3 {
@@ -454,11 +435,10 @@ export default function GradientPage() {
           content: '';
           position: absolute;
           top: 48px;
-          left: 12%;
-          right: 12%;
-          height: 3px;
-          background: var(--gradient-primary);
-          border-radius: var(--radius-full);
+          left: 15%;
+          right: 15%;
+          height: 2px;
+          background: var(--blue-200);
           z-index: 0;
         }
 
@@ -469,33 +449,31 @@ export default function GradientPage() {
         }
 
         .gradient-step-number {
-          width: 48px;
-          height: 48px;
-          background: var(--gradient-primary);
-          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          background: var(--blue-500);
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 20px;
-          font-weight: 800;
+          font-size: 18px;
+          font-weight: 700;
           color: white;
-          margin: 0 auto var(--space-5);
-          box-shadow: 0 4px 16px rgba(9, 103, 210, 0.3);
+          margin: 0 auto var(--space-4);
         }
 
         .gradient-step-icon {
-          width: 80px;
-          height: 80px;
-          background: var(--glass-bg);
-          backdrop-filter: blur(8px);
-          border: 1px solid var(--glass-border);
-          border-radius: var(--radius-lg);
+          width: 72px;
+          height: 72px;
+          background: white;
+          border: 1px solid var(--grey-200);
+          border-radius: var(--radius-md);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 36px;
+          font-size: 32px;
           margin: 0 auto var(--space-4);
-          box-shadow: var(--glass-shadow);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .gradient-step h3 {
@@ -539,13 +517,14 @@ export default function GradientPage() {
         }
 
         .gradient-pricing-card.featured {
-          background: var(--gradient-primary);
+          background: var(--blue-600);
           color: white;
-          transform: scale(1.05);
+          border-color: var(--blue-600);
         }
 
         .gradient-pricing-card.featured:hover {
-          transform: scale(1.05) translateY(-8px);
+          transform: translateY(-8px);
+          box-shadow: 0 20px 60px rgba(9, 103, 210, 0.2);
         }
 
         .gradient-pricing-badge {
@@ -553,10 +532,10 @@ export default function GradientPage() {
           top: -12px;
           left: 50%;
           transform: translateX(-50%);
-          background: var(--gradient-accent);
+          background: var(--cyan-500);
           color: white;
           padding: var(--space-1) var(--space-4);
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           font-size: 12px;
           font-weight: 700;
         }
@@ -598,10 +577,7 @@ export default function GradientPage() {
         }
 
         .gradient-pricing-card:not(.featured) .gradient-pricing-price {
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: var(--blue-600);
         }
 
         .gradient-pricing-period {
@@ -679,18 +655,17 @@ export default function GradientPage() {
         }
 
         .gradient-testimonial-card {
-          background: var(--glass-bg);
-          backdrop-filter: blur(16px);
-          border: 1px solid var(--glass-border);
-          border-radius: var(--radius-lg);
+          background: white;
+          border: 1px solid var(--grey-200);
+          border-radius: var(--radius-md);
           padding: var(--space-6);
-          box-shadow: var(--glass-shadow);
-          transition: all 0.3s;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+          transition: all 0.2s;
         }
 
         .gradient-testimonial-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 16px 48px rgba(9, 103, 210, 0.2);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.1);
         }
 
         .gradient-testimonial-rating {
@@ -720,8 +695,8 @@ export default function GradientPage() {
         .gradient-testimonial-avatar {
           width: 48px;
           height: 48px;
-          background: var(--gradient-primary);
-          border-radius: 50%;
+          background: var(--blue-100);
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -816,15 +791,15 @@ export default function GradientPage() {
         }
 
         .gradient-shield {
-          width: 200px;
-          height: 240px;
-          background: var(--gradient-primary);
-          border-radius: var(--radius-xl);
+          width: 180px;
+          height: 220px;
+          background: var(--blue-500);
+          border-radius: var(--radius-lg);
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 20px 60px rgba(9, 103, 210, 0.4);
+          box-shadow: 0 12px 40px rgba(9, 103, 210, 0.3);
           position: relative;
         }
 
@@ -832,8 +807,8 @@ export default function GradientPage() {
           content: '';
           position: absolute;
           inset: 4px;
-          background: rgba(255,255,255,0.1);
-          border-radius: calc(var(--radius-xl) - 4px);
+          background: rgba(255,255,255,0.05);
+          border-radius: calc(var(--radius-lg) - 4px);
         }
 
         .gradient-shield-icon {
@@ -870,10 +845,7 @@ export default function GradientPage() {
         .gradient-stat-value {
           font-size: 48px;
           font-weight: 800;
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: var(--blue-500);
           margin-bottom: var(--space-2);
         }
 
@@ -892,22 +864,11 @@ export default function GradientPage() {
         .gradient-cta-box {
           max-width: 800px;
           margin: 0 auto;
-          background: var(--gradient-primary);
-          border-radius: var(--radius-xl);
+          background: var(--blue-600);
+          border-radius: var(--radius-lg);
           padding: var(--space-9);
           position: relative;
           overflow: hidden;
-        }
-
-        .gradient-cta-box::before {
-          content: '';
-          position: absolute;
-          top: -100px;
-          right: -100px;
-          width: 300px;
-          height: 300px;
-          background: rgba(255,255,255,0.1);
-          border-radius: 50%;
         }
 
         .gradient-cta h2 {
@@ -971,20 +932,20 @@ export default function GradientPage() {
           position: fixed;
           bottom: var(--space-6);
           right: var(--space-6);
-          background: var(--gradient-primary);
+          background: var(--blue-500);
           color: white;
           padding: var(--space-3) var(--space-5);
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-md);
           text-decoration: none;
           font-weight: 600;
-          box-shadow: 0 4px 16px rgba(9, 103, 210, 0.3);
-          transition: all 0.3s;
+          box-shadow: 0 2px 8px rgba(9, 103, 210, 0.2);
+          transition: all 0.2s;
           z-index: 100;
         }
 
         .gradient-back-link:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(9, 103, 210, 0.4);
+          background: var(--blue-600);
+          transform: translateY(-1px);
         }
 
         @media (max-width: 1024px) {
@@ -994,8 +955,7 @@ export default function GradientPage() {
           .gradient-how-steps { grid-template-columns: repeat(2, 1fr); }
           .gradient-how-steps::before { display: none; }
           .gradient-pricing-grid { grid-template-columns: 1fr; }
-          .gradient-pricing-card.featured { transform: none; }
-          .gradient-pricing-card.featured:hover { transform: translateY(-8px); }
+          .gradient-pricing-card.featured:hover { transform: translateY(-4px); }
           .gradient-testimonials-grid { grid-template-columns: 1fr; }
           .gradient-security-container { grid-template-columns: 1fr; }
           .gradient-security-visual { display: none; }

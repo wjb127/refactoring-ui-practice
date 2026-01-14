@@ -50,11 +50,11 @@ export default function OrganicPage() {
           --space-9: 96px;
           --space-10: 128px;
 
-          /* Border Radius - Medium for organic feel */
-          --radius-sm: 8px;
-          --radius-md: 12px;
-          --radius-lg: 20px;
-          --radius-xl: 32px;
+          /* Border Radius - Subtle for grounded organic feel */
+          --radius-sm: 4px;
+          --radius-md: 6px;
+          --radius-lg: 8px;
+          --radius-xl: 12px;
 
           /* Shadows - Soft and warm */
           --shadow-sm: 0 2px 8px rgba(39, 36, 29, 0.06);
@@ -174,7 +174,7 @@ export default function OrganicPage() {
           background: var(--green-100);
           color: var(--green-700);
           padding: var(--space-2) var(--space-4);
-          border-radius: var(--radius-xl);
+          border-radius: var(--radius-md);
           font-size: 13px;
           font-weight: 600;
           margin-bottom: var(--space-5);
@@ -207,13 +207,14 @@ export default function OrganicPage() {
 
         .organic-hero-image {
           aspect-ratio: 1;
-          background: linear-gradient(135deg, var(--green-200) 0%, var(--green-400) 100%);
-          border-radius: var(--radius-xl);
+          background: var(--green-100);
+          border: 1px solid var(--green-200);
+          border-radius: var(--radius-lg);
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 120px;
-          box-shadow: var(--shadow-lg);
+          box-shadow: var(--shadow-md);
         }
 
         .organic-benefits {
@@ -278,15 +279,15 @@ export default function OrganicPage() {
         }
 
         .organic-benefit-icon {
-          width: 72px;
-          height: 72px;
+          width: 64px;
+          height: 64px;
           margin: 0 auto var(--space-5);
           background: var(--green-100);
-          border-radius: 50%;
+          border-radius: var(--radius-md);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 32px;
+          font-size: 28px;
         }
 
         .organic-benefit-card h3 {
@@ -334,19 +335,19 @@ export default function OrganicPage() {
         }
 
         .organic-step-number {
-          width: 48px;
-          height: 48px;
+          width: 40px;
+          height: 40px;
           background: var(--green-600);
           color: white;
-          border-radius: 50%;
+          border-radius: var(--radius-md);
           display: flex;
           align-items: center;
           justify-content: center;
           font-family: 'Lora', serif;
-          font-size: 20px;
+          font-size: 18px;
           font-weight: 600;
-          margin: 0 auto var(--space-5);
-          box-shadow: var(--shadow-md);
+          margin: 0 auto var(--space-4);
+          box-shadow: var(--shadow-sm);
         }
 
         .organic-step-icon {
@@ -456,8 +457,9 @@ export default function OrganicPage() {
 
         .organic-story-image {
           aspect-ratio: 4/3;
-          background: linear-gradient(135deg, var(--green-100) 0%, var(--green-300) 100%);
-          border-radius: var(--radius-xl);
+          background: var(--green-100);
+          border: 1px solid var(--green-200);
+          border-radius: var(--radius-lg);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -577,7 +579,7 @@ export default function OrganicPage() {
           width: 48px;
           height: 48px;
           background: var(--green-100);
-          border-radius: 50%;
+          border-radius: var(--radius-md);
           display: flex;
           align-items: center;
           justify-content: center;
