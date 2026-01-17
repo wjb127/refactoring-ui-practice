@@ -5,6 +5,81 @@ import { useState } from "react";
 
 export default function LearnPage() {
   const [activeTab, setActiveTab] = useState(0);
+  const [copied, setCopied] = useState(false);
+
+  const aiPrompt = `# Refactoring UI 원칙에 따른 디자인 개선 요청
+
+다음 Refactoring UI 핵심 원칙들을 적용하여 현재 웹사이트/컴포넌트의 디자인을 개선해주세요.
+
+## 적용할 디자인 원칙
+
+### 1. 시각적 계층 구조 (Visual Hierarchy)
+- 크기만으로 계층을 만들지 말고, 색상 대비와 폰트 굵기 활용
+- Primary 정보: 진한 색상 (grey-900), 굵은 폰트
+- Secondary 정보: 중간 색상 (grey-600), 보통 굵기
+- Tertiary 정보: 연한 색상 (grey-400), 작은 크기
+- 2-3단계의 명확한 계층 유지
+
+### 2. 일관된 간격 시스템 (Spacing System)
+- 4px 또는 8px 기반의 간격 시스템 사용
+- 권장 스케일: 4, 8, 12, 16, 24, 32, 48, 64, 96px
+- 섹션 사이: 48-96px
+- 요소 그룹 사이: 24-32px
+- 관련 요소 사이: 8-16px
+
+### 3. 색상 시스템 (Color System)
+- 각 색상은 050-900까지 9-10단계로 구성
+- 050-200: 배경, 호버 상태, 보더
+- 300-400: 덜 중요한 텍스트
+- 500-600: 버튼, 링크, 강조
+- 700-900: 제목, 본문 텍스트
+- 채도 높은 색상은 아껴서 사용
+
+### 4. 타이포그래피 (Typography)
+- 5-7개의 폰트 크기로 제한
+- 권장 스케일: 12, 14, 16, 18, 20, 24, 32, 48px
+- 본문 (14-18px): line-height 1.6-1.8
+- 제목 (24-32px): line-height 1.3-1.4
+- 대형 제목 (48px+): line-height 1.1-1.2
+
+### 5. Border Radius
+- 작은 radius (0-4px): 전문적, 단정한 느낌
+- 중간 radius (8px): 균형 잡힌 느낌
+- 큰 radius (16px+): 모던하고 친근한 느낌
+- 큰 요소에는 큰 radius, 작은 요소에는 작은 radius
+
+### 6. 그림자 시스템 (Shadow System)
+- sm: 0 1px 2px rgba(0,0,0,0.05) - 카드, 입력 필드
+- md: 0 4px 6px rgba(0,0,0,0.07) - 드롭다운, 팝오버
+- lg: 0 10px 15px rgba(0,0,0,0.1) - 모달, 토스트
+- xl: 0 20px 25px rgba(0,0,0,0.15) - 풀스크린 오버레이
+
+### 7. 마무리 디테일
+- 모든 클릭 요소에 호버 효과 적용
+- 상태 변화에 0.2-0.3s 트랜지션 적용
+- 키보드 접근성을 위한 포커스 스타일
+- 빈 상태, 로딩 상태, 에러 상태 처리
+
+## 요청사항
+
+위 원칙들을 현재 코드에 적용하여:
+1. 시각적 계층 구조를 개선해주세요
+2. 일관된 간격 시스템을 적용해주세요
+3. 색상과 타이포그래피를 정리해주세요
+4. Border radius와 그림자를 일관성 있게 조정해주세요
+5. 호버/포커스 등 인터랙션 상태를 추가해주세요
+
+변경 전후를 비교할 수 있도록 어떤 부분이 왜 바뀌었는지 설명해주세요.`;
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(aiPrompt);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
 
   return (
     <>
@@ -558,6 +633,142 @@ export default function LearnPage() {
           .learn-compare { grid-template-columns: 1fr; }
           .learn-nav-links { display: none; }
         }
+
+        /* AI Prompt Section Styles */
+        .learn-prompt-container {
+          background: var(--grey-800);
+          border-radius: var(--radius-xl);
+          overflow: hidden;
+          margin: var(--space-5) 0;
+        }
+
+        .learn-prompt-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: var(--space-4) var(--space-5);
+          background: var(--grey-900);
+          border-bottom: 1px solid var(--grey-700);
+        }
+
+        .learn-prompt-title {
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--grey-300);
+          display: flex;
+          align-items: center;
+          gap: var(--space-2);
+        }
+
+        .learn-prompt-title span {
+          color: var(--green-500);
+        }
+
+        .learn-copy-btn {
+          display: flex;
+          align-items: center;
+          gap: var(--space-2);
+          padding: var(--space-2) var(--space-4);
+          background: var(--blue-600);
+          color: white;
+          border: none;
+          border-radius: var(--radius-md);
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .learn-copy-btn:hover {
+          background: var(--blue-500);
+          transform: translateY(-1px);
+        }
+
+        .learn-copy-btn.copied {
+          background: var(--green-500);
+        }
+
+        .learn-prompt-content {
+          padding: var(--space-5);
+          max-height: 400px;
+          overflow-y: auto;
+        }
+
+        .learn-prompt-content pre {
+          font-family: 'Fira Code', monospace;
+          font-size: 13px;
+          color: var(--grey-200);
+          line-height: 1.7;
+          white-space: pre-wrap;
+          word-break: break-word;
+          margin: 0;
+        }
+
+        .learn-prompt-content::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        .learn-prompt-content::-webkit-scrollbar-track {
+          background: var(--grey-800);
+        }
+
+        .learn-prompt-content::-webkit-scrollbar-thumb {
+          background: var(--grey-600);
+          border-radius: 4px;
+        }
+
+        .learn-prompt-content::-webkit-scrollbar-thumb:hover {
+          background: var(--grey-500);
+        }
+
+        .learn-usage-steps {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--space-4);
+          margin: var(--space-5) 0;
+        }
+
+        .learn-usage-step {
+          background: white;
+          padding: var(--space-5);
+          border-radius: var(--radius-lg);
+          border: 1px solid var(--grey-200);
+          text-align: center;
+        }
+
+        .learn-usage-step-number {
+          width: 36px;
+          height: 36px;
+          background: var(--blue-100);
+          color: var(--blue-600);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 16px;
+          margin: 0 auto var(--space-3);
+        }
+
+        .learn-usage-step h4 {
+          font-size: 15px;
+          font-weight: 600;
+          color: var(--grey-800);
+          margin-bottom: var(--space-2);
+        }
+
+        .learn-usage-step p {
+          font-size: 13px;
+          color: var(--grey-600);
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        @media (max-width: 768px) {
+          .learn-usage-steps {
+            grid-template-columns: 1fr;
+          }
+        }
       `}</style>
 
       <nav className="learn-nav">
@@ -621,6 +832,10 @@ export default function LearnPage() {
             <a href="#finishing" className="learn-toc-item">
               <div className="learn-toc-number">08</div>
               <div className="learn-toc-title">마무리 터치</div>
+            </a>
+            <a href="#ai-prompt" className="learn-toc-item">
+              <div className="learn-toc-number">09</div>
+              <div className="learn-toc-title">AI 디자인 프롬프트</div>
             </a>
           </div>
         </div>
@@ -982,6 +1197,77 @@ export default function LearnPage() {
                 Playful: 큰 radius + 밝은 색상 + 둥근 산세리프<br/>
                 Elegant: 얇은 선 + 넓은 여백 + 세리프 폰트<br/>
                 Tech: 다크 테마 + 네온 액센트 + 모노스페이스
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 9: AI Prompt */}
+        <div id="ai-prompt" className="learn-section">
+          <div className="learn-section-header">
+            <div className="learn-section-number">Chapter 09</div>
+            <h2>AI 디자인 프롬프트</h2>
+            <p className="learn-section-intro">
+              위에서 배운 모든 원칙을 담은 프롬프트입니다.
+              Claude Code나 다른 코딩 AI에게 전달하면 디자인을 체계적으로 개선할 수 있습니다.
+            </p>
+          </div>
+
+          <div className="learn-card">
+            <h3><span className="icon">🤖</span> 사용 방법</h3>
+            <p>
+              아래 프롬프트를 복사해서 AI에게 전달하면, Refactoring UI 원칙에 따라
+              현재 코드의 디자인을 개선해줍니다.
+            </p>
+
+            <div className="learn-usage-steps">
+              <div className="learn-usage-step">
+                <div className="learn-usage-step-number">1</div>
+                <h4>프롬프트 복사</h4>
+                <p>아래 복사 버튼을 클릭하여 프롬프트를 클립보드에 복사하세요.</p>
+              </div>
+              <div className="learn-usage-step">
+                <div className="learn-usage-step-number">2</div>
+                <h4>AI에게 전달</h4>
+                <p>Claude Code, Cursor, 또는 다른 코딩 AI에 프롬프트를 붙여넣기하세요.</p>
+              </div>
+              <div className="learn-usage-step">
+                <div className="learn-usage-step-number">3</div>
+                <h4>코드 개선 요청</h4>
+                <p>개선하고 싶은 컴포넌트 코드와 함께 전달하면 디자인이 개선됩니다.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="learn-card">
+            <h3><span className="icon">📋</span> 디자인 개선 프롬프트</h3>
+            <p>
+              이 프롬프트에는 시각적 계층, 간격 시스템, 색상, 타이포그래피, border radius,
+              그림자 등 모든 핵심 원칙이 정리되어 있습니다.
+            </p>
+
+            <div className="learn-prompt-container">
+              <div className="learn-prompt-header">
+                <div className="learn-prompt-title">
+                  <span>●</span> refactoring-ui-prompt.md
+                </div>
+                <button
+                  className={`learn-copy-btn ${copied ? 'copied' : ''}`}
+                  onClick={handleCopy}
+                >
+                  {copied ? '✓ 복사됨!' : '📋 복사하기'}
+                </button>
+              </div>
+              <div className="learn-prompt-content">
+                <pre>{aiPrompt}</pre>
+              </div>
+            </div>
+
+            <div className="learn-tip">
+              <div className="learn-tip-label">활용 팁</div>
+              <p>
+                프롬프트와 함께 개선하고 싶은 컴포넌트의 코드를 붙여넣으면
+                AI가 원칙에 맞게 스타일을 수정해줍니다. "이 버튼 컴포넌트를 위 원칙에 맞게 개선해줘"처럼 요청하세요.
               </p>
             </div>
           </div>
