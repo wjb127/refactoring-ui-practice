@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function GradientPage() {
   return (
@@ -247,7 +248,21 @@ export default function GradientPage() {
           display: flex;
           gap: var(--space-4);
           justify-content: center;
-          margin-bottom: var(--space-9);
+          margin-bottom: var(--space-7);
+        }
+
+        .gradient-hero-image {
+          max-width: 700px;
+          margin: 0 auto;
+          border-radius: var(--radius-xl);
+          overflow: hidden;
+          box-shadow: 0 20px 60px rgba(9, 103, 210, 0.2);
+        }
+
+        .gradient-hero-image img {
+          display: block;
+          width: 100%;
+          height: auto;
         }
 
         .gradient-hero-cards {
@@ -416,6 +431,25 @@ export default function GradientPage() {
           font-size: 15px;
           color: var(--grey-500);
           line-height: 1.7;
+        }
+
+        .gradient-features-visual {
+          margin-top: var(--space-8);
+          display: flex;
+          justify-content: center;
+        }
+
+        .gradient-features-image {
+          max-width: 600px;
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          box-shadow: 0 12px 40px rgba(9, 103, 210, 0.15);
+        }
+
+        .gradient-features-image img {
+          display: block;
+          width: 100%;
+          height: auto;
         }
 
         /* How It Works Section */
@@ -854,11 +888,98 @@ export default function GradientPage() {
           color: var(--grey-500);
         }
 
+        /* Lifestyle Section */
+        .gradient-lifestyle {
+          padding: var(--space-9) var(--space-6);
+          background: white;
+        }
+
+        .gradient-lifestyle-content {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--space-8);
+          align-items: center;
+        }
+
+        .gradient-lifestyle-text h2 {
+          font-size: 40px;
+          font-weight: 800;
+          color: var(--grey-900);
+          margin-bottom: var(--space-4);
+        }
+
+        .gradient-lifestyle-text p {
+          font-size: 17px;
+          color: var(--grey-500);
+          line-height: 1.8;
+          margin-bottom: var(--space-5);
+        }
+
+        .gradient-lifestyle-features {
+          list-style: none;
+        }
+
+        .gradient-lifestyle-features li {
+          display: flex;
+          align-items: center;
+          gap: var(--space-3);
+          padding: var(--space-2) 0;
+          color: var(--grey-700);
+        }
+
+        .gradient-lifestyle-features li::before {
+          content: '✓';
+          width: 24px;
+          height: 24px;
+          background: var(--cyan-100);
+          color: var(--cyan-600);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          font-weight: 700;
+          flex-shrink: 0;
+        }
+
+        .gradient-lifestyle-image {
+          border-radius: var(--radius-xl);
+          overflow: hidden;
+          box-shadow: 0 20px 60px rgba(9, 103, 210, 0.15);
+        }
+
+        .gradient-lifestyle-image img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
+        @media (max-width: 1024px) {
+          .gradient-lifestyle-content {
+            grid-template-columns: 1fr;
+          }
+        }
+
         .gradient-cta {
           padding: var(--space-10) var(--space-6);
           text-align: center;
           position: relative;
-          background: var(--gradient-soft);
+          overflow: hidden;
+        }
+
+        .gradient-cta-bg {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+        }
+
+        .gradient-cta-bg img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.5;
         }
 
         .gradient-cta-box {
@@ -996,25 +1117,14 @@ export default function GradientPage() {
             <a href="#" className="gradient-btn gradient-btn-secondary gradient-btn-large">데모 보기</a>
           </div>
 
-          <div className="gradient-hero-cards">
-            <div className="gradient-card-preview">
-              <div className="gradient-card-header">
-                <div className="gradient-card-icon">💰</div>
-                <span className="gradient-card-badge">+12.5%</span>
-              </div>
-              <div className="gradient-card-amount">₩24,500,000</div>
-              <div className="gradient-card-label">총 자산</div>
-              <div className="gradient-card-chart"></div>
-            </div>
-            <div className="gradient-card-preview">
-              <div className="gradient-card-header">
-                <div className="gradient-card-icon">📊</div>
-                <span className="gradient-card-badge">이번 달</span>
-              </div>
-              <div className="gradient-card-amount">₩1,850,000</div>
-              <div className="gradient-card-label">투자 수익</div>
-              <div className="gradient-card-chart"></div>
-            </div>
+          <div className="gradient-hero-image">
+            <Image
+              src="/images/gradient/hero.png"
+              alt="AI powered financial visualization"
+              width={700}
+              height={500}
+              priority
+            />
           </div>
         </div>
       </section>
@@ -1057,6 +1167,17 @@ export default function GradientPage() {
               <div className="gradient-feature-icon">🔒</div>
               <h3>은행급 보안</h3>
               <p>256비트 암호화와 생체 인증으로 자산을 안전하게 보호합니다.</p>
+            </div>
+          </div>
+
+          <div className="gradient-features-visual">
+            <div className="gradient-features-image">
+              <Image
+                src="/images/gradient/feature.png"
+                alt="Financial app UI on smartphone"
+                width={600}
+                height={450}
+              />
             </div>
           </div>
         </div>
@@ -1274,6 +1395,34 @@ export default function GradientPage() {
         </div>
       </section>
 
+      {/* Lifestyle Section */}
+      <section className="gradient-lifestyle">
+        <div className="gradient-lifestyle-content">
+          <div className="gradient-lifestyle-text">
+            <h2>언제 어디서나<br />스마트한 금융</h2>
+            <p>
+              출퇴근길, 카페, 집에서도 손쉽게 자산을 관리하세요.
+              실시간 알림과 원터치 투자로 바쁜 일상 속에서도
+              현명한 금융 결정을 내릴 수 있습니다.
+            </p>
+            <ul className="gradient-lifestyle-features">
+              <li>실시간 포트폴리오 모니터링</li>
+              <li>원터치 투자 및 이체</li>
+              <li>개인 맞춤형 금융 인사이트</li>
+              <li>24시간 고객 지원</li>
+            </ul>
+          </div>
+          <div className="gradient-lifestyle-image">
+            <Image
+              src="/images/gradient/team.png"
+              alt="Young professional using fintech app"
+              width={600}
+              height={400}
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="gradient-stats">
         <div className="gradient-section-container">
           <div className="gradient-section-header">
@@ -1303,6 +1452,15 @@ export default function GradientPage() {
       </section>
 
       <section className="gradient-cta">
+        <div className="gradient-cta-bg">
+          <Image
+            src="/images/gradient/background.png"
+            alt=""
+            width={1920}
+            height={600}
+            aria-hidden="true"
+          />
+        </div>
         <div className="gradient-cta-box">
           <h2>지금 시작하세요</h2>
           <p>가입 후 30일간 프리미엄 기능 무료 체험</p>

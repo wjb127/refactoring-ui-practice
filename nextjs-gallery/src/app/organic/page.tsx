@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function OrganicPage() {
   return (
@@ -206,15 +207,15 @@ export default function OrganicPage() {
         }
 
         .organic-hero-image {
-          aspect-ratio: 1;
-          background: var(--green-100);
-          border: 1px solid var(--green-200);
           border-radius: var(--radius-lg);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 120px;
-          box-shadow: var(--shadow-md);
+          overflow: hidden;
+          box-shadow: var(--shadow-lg);
+        }
+
+        .organic-hero-image img {
+          display: block;
+          width: 100%;
+          height: auto;
         }
 
         .organic-benefits {
@@ -302,6 +303,25 @@ export default function OrganicPage() {
           font-size: 15px;
           color: var(--grey-500);
           line-height: 1.7;
+        }
+
+        .organic-benefits-visual {
+          margin-top: var(--space-8);
+          display: flex;
+          justify-content: center;
+        }
+
+        .organic-benefits-image {
+          max-width: 700px;
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          box-shadow: var(--shadow-md);
+        }
+
+        .organic-benefits-image img {
+          display: block;
+          width: 100%;
+          height: auto;
         }
 
         /* How It Works Section */
@@ -456,34 +476,15 @@ export default function OrganicPage() {
         }
 
         .organic-story-image {
-          aspect-ratio: 4/3;
-          background: var(--green-100);
-          border: 1px solid var(--green-200);
           border-radius: var(--radius-lg);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 100px;
-          position: relative;
           overflow: hidden;
+          box-shadow: var(--shadow-lg);
         }
 
-        .organic-story-image::before {
-          content: '🌾';
-          position: absolute;
-          font-size: 60px;
-          bottom: 20px;
-          left: 30px;
-          opacity: 0.5;
-        }
-
-        .organic-story-image::after {
-          content: '☀️';
-          position: absolute;
-          font-size: 40px;
-          top: 20px;
-          right: 30px;
-          opacity: 0.6;
+        .organic-story-image img {
+          display: block;
+          width: 100%;
+          height: auto;
         }
 
         .organic-story-content h2 {
@@ -730,16 +731,25 @@ export default function OrganicPage() {
           text-align: center;
           color: white;
           position: relative;
+          overflow: hidden;
         }
 
-        .organic-cta::before {
-          content: '🌿';
+        .organic-cta-bg {
           position: absolute;
-          font-size: 200px;
-          opacity: 0.1;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          inset: 0;
+          z-index: 0;
+          opacity: 0.15;
+        }
+
+        .organic-cta-bg img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .organic-cta-content {
+          position: relative;
+          z-index: 1;
         }
 
         .organic-cta h2 {
@@ -893,7 +903,15 @@ export default function OrganicPage() {
               <a href="#" className="organic-btn organic-btn-secondary">농장 이야기</a>
             </div>
           </div>
-          <div className="organic-hero-image">🥬</div>
+          <div className="organic-hero-image">
+            <Image
+              src="/images/organic/hero.png"
+              alt="Fresh organic vegetables on wooden table"
+              width={600}
+              height={400}
+              priority
+            />
+          </div>
         </div>
       </section>
 
@@ -920,6 +938,17 @@ export default function OrganicPage() {
               <div className="organic-benefit-icon">🚚</div>
               <h3>산지 직송</h3>
               <p>수확 후 24시간 이내 배송으로 신선함을 그대로 전달해 드립니다.</p>
+            </div>
+          </div>
+
+          <div className="organic-benefits-visual">
+            <div className="organic-benefits-image">
+              <Image
+                src="/images/organic/feature.png"
+                alt="Hand-drawn botanical illustrations"
+                width={700}
+                height={500}
+              />
             </div>
           </div>
         </div>
@@ -1010,7 +1039,14 @@ export default function OrganicPage() {
       {/* Farm Story Section */}
       <section className="organic-story">
         <div className="organic-story-container">
-          <div className="organic-story-image">🧑‍🌾</div>
+          <div className="organic-story-image">
+            <Image
+              src="/images/organic/team.png"
+              alt="Farmer holding fresh harvest basket"
+              width={600}
+              height={450}
+            />
+          </div>
           <div className="organic-story-content">
             <h2>우리 농장 이야기</h2>
             <p>
@@ -1155,9 +1191,20 @@ export default function OrganicPage() {
       </section>
 
       <section className="organic-cta">
-        <h2>자연의 맛을 경험하세요</h2>
-        <p>첫 주문 시 15% 할인 + 무료 배송</p>
-        <a href="#" className="organic-btn organic-btn-secondary">지금 시작하기</a>
+        <div className="organic-cta-bg">
+          <Image
+            src="/images/organic/background.png"
+            alt=""
+            width={1920}
+            height={600}
+            aria-hidden="true"
+          />
+        </div>
+        <div className="organic-cta-content">
+          <h2>자연의 맛을 경험하세요</h2>
+          <p>첫 주문 시 15% 할인 + 무료 배송</p>
+          <a href="#" className="organic-btn organic-btn-secondary">지금 시작하기</a>
+        </div>
       </section>
 
       <footer className="organic-footer">
