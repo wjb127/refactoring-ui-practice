@@ -83,6 +83,9 @@ export default function Home() {
             <Link href="/boring-ui" className={styles.learnLink}>
               🔲 Boring UI
             </Link>
+            <Link href="/designing-ui" className={styles.learnLink}>
+              🎨 Designing UI
+            </Link>
           </div>
         </div>
       </header>

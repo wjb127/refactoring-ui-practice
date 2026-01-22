@@ -54,6 +54,11 @@
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
 }
 
+.learnLink:nth-child(3) {
+  background: linear-gradient(135deg, #0967d2 0%, #1cd4d4 100%);
+  box-shadow: 0 4px 12px rgba(9, 103, 210, 0.3);
+}
+
 .learnLink:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(49, 130, 206, 0.4);
@@ -61,6 +66,10 @@
 
 .learnLink:nth-child(2):hover {
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.4);
+}
+
+.learnLink:nth-child(3):hover {
+  box-shadow: 0 6px 16px rgba(9, 103, 210, 0.4);
 }
 
 .main {
