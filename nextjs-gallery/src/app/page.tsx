@@ -76,9 +76,14 @@ export default function Home() {
             <h1>Refactoring UI Style Gallery</h1>
             <p className={styles.subtitle}>9가지 다른 디자인 스타일 조합</p>
           </div>
-          <Link href="/learn" className={styles.learnLink}>
-            📚 원칙 배우기
-          </Link>
+          <div className={styles.headerLinks}>
+            <Link href="/learn" className={styles.learnLink}>
+              📚 Refactoring UI
+            </Link>
+            <Link href="/boring-ui" className={styles.learnLink}>
+              🔲 Boring UI
+            </Link>
+          </div>
         </div>
       </header>
 
